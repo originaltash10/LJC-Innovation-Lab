@@ -1,0 +1,190 @@
+/* ==========================================================================
+   LJC INNOVATION LAB — DESIGN SYSTEM  v1.0
+   "Printed" — light, engineered, type-led.
+   Drop this file into any page: <link rel="stylesheet" href="ljc-lab.css">
+   Fonts: Inter (200–600) + IBM Plex Mono (400–500), e.g. via Google Fonts.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TOKENS
+   -------------------------------------------------------------------------- */
+:root{
+  /* color */
+  --lab-bg:        #EFF3F6;               /* page background (ice) */
+  --lab-bg-2:      #E4EBF0;               /* recessed surface / image stage */
+  --lab-card:      #FFFFFF;               /* raised surface */
+  --lab-ink:       #0C1926;               /* primary text */
+  --lab-dim:       rgba(12,25,38,.62);    /* secondary text */
+  --lab-line:      rgba(12,25,38,.16);    /* hairline borders */
+  --lab-hair:      rgba(12,25,38,.22);    /* decorative line-work */
+  --lab-blue:      #2E6E99;               /* primary accent (links, active, em) */
+  --lab-steel:     #5E9BBE;               /* secondary accent (eyebrows, nodes) */
+  --lab-ice:       #8DCCFF;               /* washes + tints only, never text */
+  --lab-tag-bg:    rgba(12,25,38,.85);    /* dark chip on imagery */
+  --lab-tag-ink:   #F2F7FA;
+
+  /* type */
+  --lab-font:      "Inter","Helvetica Neue",Arial,sans-serif;
+  --lab-mono:      "IBM Plex Mono",ui-monospace,Menlo,monospace;
+
+  /* type scale (fluid) */
+  --lab-display-1: clamp(42px, 6.6vw, 96px);   /* cover titles   w300 ls-0.035em lh1.04 */
+  --lab-display-2: clamp(28px, 4vw,   56px);   /* section titles w300 ls-0.03em  lh1.12 */
+  --lab-display-3: clamp(19px, 1.8vw, 25px);   /* card titles    w400 ls-0.02em  */
+  --lab-lede:      clamp(14px, 1.25vw, 17px);  /* intro copy     w300 lh1.65 */
+  --lab-body:      13.5px;                     /* body           w300 lh1.6  */
+  --lab-caption:   12.5px;                     /* chip captions  w400 lh1.5  */
+  --lab-label:     11px;                       /* mono labels    ls .2–.28em uppercase */
+
+  /* space + radius */
+  --lab-gutter:    7vw;         /* desktop page gutter (22px mobile) */
+  --lab-gap:       12px;        /* card grid gap fallback (1px hairline grids on desktop) */
+
+  /* elevation */
+  --lab-shadow-1:  0 14px 34px rgba(30,58,80,.08);   /* cards */
+  --lab-shadow-2:  0 26px 60px rgba(23,44,60,.20);   /* imagery */
+
+  /* motion */
+  --lab-ease:      cubic-bezier(.2,.7,.2,1);         /* reveals */
+  --lab-ease-wipe: cubic-bezier(.77,0,.18,1);        /* page wipes, menus */
+  --lab-t-reveal:  .7s;
+  --lab-t-wipe:    .8s;
+  --lab-t-ripple:  .55s;
+}
+
+/* --------------------------------------------------------------------------
+   2. BASE
+   -------------------------------------------------------------------------- */
+.lab, .lab body{ background:var(--lab-bg); color:var(--lab-ink); font-family:var(--lab-font); }
+.lab *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+.lab img{ display:block; max-width:100%; }
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+.lab-display-1{ font-weight:300; font-size:var(--lab-display-1); line-height:1.04; letter-spacing:-.035em; }
+.lab-display-2{ font-weight:300; font-size:var(--lab-display-2); line-height:1.12; letter-spacing:-.03em; }
+.lab-display-3{ font-weight:400; font-size:var(--lab-display-3); letter-spacing:-.02em; }
+.lab-display-1 em, .lab-display-2 em{ font-style:normal; color:var(--lab-blue); } /* accent word */
+.lab-lede{ font-weight:300; font-size:var(--lab-lede); line-height:1.65; color:var(--lab-dim); }
+.lab-body{ font-weight:300; font-size:var(--lab-body); line-height:1.6; color:var(--lab-dim); }
+.lab-body b{ color:var(--lab-ink); font-weight:500; }
+.lab-eyebrow{ font-family:var(--lab-mono); font-size:var(--lab-label); letter-spacing:.28em;
+  text-transform:uppercase; color:var(--lab-steel); }
+.lab-eyebrow .n{ color:var(--lab-blue); }        /* the "/" divider */
+.lab-kicker{ font-family:var(--lab-mono); font-size:10px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--lab-dim); }
+
+/* --------------------------------------------------------------------------
+   4. LINE-WORK (decorative vocabulary)
+   -------------------------------------------------------------------------- */
+.lab-cross{ position:absolute; width:15px; height:15px; pointer-events:none; }
+.lab-cross::before,.lab-cross::after{ content:""; position:absolute; background:var(--lab-hair); }
+.lab-cross::before{ left:0; top:7px; width:15px; height:1px; }
+.lab-cross::after { left:7px; top:0; width:1px; height:15px; }
+
+.lab-arc{ position:absolute; border:1px solid var(--lab-hair); border-radius:50%; pointer-events:none; }
+.lab-vline{ position:absolute; top:0; bottom:0; width:1px; background:var(--lab-line); pointer-events:none; }
+
+.lab-ticks{ display:flex; gap:9px; }
+.lab-ticks span{ width:1px; height:9px; background:var(--lab-hair); }
+.lab-ticks span:nth-child(5n+1){ height:15px; }
+
+/* registration corners — place inside a position:relative frame */
+.lab-corners{ position:absolute; inset:0; pointer-events:none; }
+.lab-corners i{ position:absolute; width:13px; height:13px; border:0 solid var(--lab-ink); }
+.lab-corners i:nth-child(1){ left:-7px;  top:-7px;    border-left-width:1px;  border-top-width:1px; }
+.lab-corners i:nth-child(2){ right:-7px; top:-7px;    border-right-width:1px; border-top-width:1px; }
+.lab-corners i:nth-child(3){ left:-7px;  bottom:-7px; border-left-width:1px;  border-bottom-width:1px; }
+.lab-corners i:nth-child(4){ right:-7px; bottom:-7px; border-right-width:1px; border-bottom-width:1px; }
+
+/* oversized cropped watermark word */
+.lab-ghost{ position:absolute; top:.1em; left:-.03em; font-weight:200; font-size:19vw; line-height:1;
+  letter-spacing:-.04em; color:rgba(12,25,38,.045); pointer-events:none; white-space:nowrap; user-select:none; }
+
+/* --------------------------------------------------------------------------
+   5. SURFACES + COMPONENTS
+   -------------------------------------------------------------------------- */
+/* hairline card grid: 1px gaps of line color between white cells */
+.lab-cardgrid{ display:grid; gap:1px; background:var(--lab-line); border:1px solid var(--lab-line);
+  box-shadow:var(--lab-shadow-1); }
+.lab-cardgrid > div{ background:var(--lab-card); padding:24px; }
+
+/* standalone card (mobile pattern) */
+.lab-card{ background:var(--lab-card); border:1px solid var(--lab-line); padding:20px; box-shadow:var(--lab-shadow-1); }
+
+/* image frame: offset ice tint + shadowed image + corners */
+.lab-frame{ position:relative; }
+.lab-frame .tint{ position:absolute; inset:7% -14px -14px 7%;
+  background:linear-gradient(140deg, var(--lab-bg-2), rgba(141,204,255,.3)); }
+.lab-frame .ph{ position:relative; overflow:hidden; box-shadow:var(--lab-shadow-2); }
+
+/* floating caption chip — overlap it onto the frame edge */
+.lab-cap{ background:var(--lab-card); border:1px solid var(--lab-line); padding:12px 15px;
+  box-shadow:0 14px 34px rgba(23,44,60,.14); max-width:420px; }
+.lab-cap .lab-kicker{ display:block; margin-bottom:5px; color:var(--lab-steel); }
+.lab-cap p{ margin:0; font-size:var(--lab-caption); line-height:1.5; font-weight:400; }
+
+/* dark tag chip on imagery */
+.lab-tag{ font-family:var(--lab-mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  background:var(--lab-tag-bg); color:var(--lab-tag-ink); padding:8px 12px; display:inline-block; }
+
+/* circular icon button */
+.lab-btn{ width:46px; height:46px; border:1px solid var(--lab-hair); border-radius:50%;
+  display:inline-grid; place-items:center; background:rgba(255,255,255,.5); font-size:16px;
+  cursor:pointer; transition:background .2s, color .2s; color:var(--lab-ink); }
+.lab-btn:hover{ background:var(--lab-ink); color:#fff; }
+
+/* progress dots */
+.lab-dots{ display:flex; gap:7px; }
+.lab-dots span{ width:22px; height:3px; background:var(--lab-line); border-radius:2px; transition:background .25s; }
+.lab-dots span.on{ background:var(--lab-blue); }
+
+/* timeline node (process steps) */
+.lab-node{ width:15px; height:15px; border-radius:50%; border:1px solid var(--lab-hair);
+  background:var(--lab-bg); display:inline-block; transition:all .25s; }
+.lab-node.on{ background:var(--lab-blue); border-color:var(--lab-blue);
+  box-shadow:0 0 0 5px rgba(46,110,153,.15); }
+
+/* index/menu row */
+.lab-index{ display:grid; grid-template-columns:56px 1fr auto; align-items:baseline; gap:0 8px;
+  padding:15px 4px; border-bottom:1px solid var(--lab-line); text-decoration:none; color:inherit; }
+.lab-index .num{ font-family:var(--lab-mono); font-size:11px; color:var(--lab-steel); }
+.lab-index .name{ font-weight:300; font-size:clamp(20px,3vw,32px); letter-spacing:-.02em;
+  transition:color .2s, transform .2s; }
+.lab-index:hover .name{ color:var(--lab-blue); }
+
+/* mono ticker strip */
+.lab-ticker{ border-top:1px solid var(--lab-line); overflow:hidden; height:42px; display:flex; align-items:center;
+  background:rgba(239,243,246,.65); }
+.lab-ticker .tk{ display:flex; white-space:nowrap; animation:lab-mq 26s linear infinite;
+  font-family:var(--lab-mono); font-size:10.5px; letter-spacing:.28em; text-transform:uppercase; color:var(--lab-dim); }
+.lab-ticker .tk span{ padding:0 30px; position:relative; }
+.lab-ticker .tk span::after{ content:"+"; position:absolute; right:-6px; color:var(--lab-steel); }
+@keyframes lab-mq{ to{ transform:translateX(-50%); } }
+
+/* --------------------------------------------------------------------------
+   6. MOTION (progressive enhancement — content must exist without JS)
+   Add class "js" to <html> from a script tag; reveals only hide when JS runs.
+   -------------------------------------------------------------------------- */
+html.js .lab-rv{ opacity:0; transform:translateY(22px);
+  transition:opacity var(--lab-t-reveal) ease, transform var(--lab-t-reveal) var(--lab-ease); }
+html.js .lab-rv.in{ opacity:1; transform:none; }
+
+/* click / tap ripple — spawn at pointer coordinates, remove after 600ms */
+.lab-ping{ position:fixed; z-index:89; pointer-events:none; border:1px solid var(--lab-blue);
+  border-radius:50%; width:12px; height:12px; margin:-6px 0 0 -6px;
+  animation:lab-ping var(--lab-t-ripple) ease-out both; }
+@keyframes lab-ping{ from{ opacity:.9; transform:scale(.6);} to{ opacity:0; transform:scale(6);} }
+
+/* full-screen page wipe (two stacked veils, second delayed ~90ms) */
+.lab-veil{ position:fixed; inset:0; z-index:70; pointer-events:none; transform:translateY(102%);
+  background:linear-gradient(120deg,#DEE9F0,#CFE2ED); }
+.wipe .lab-veil{ animation:lab-wipe var(--lab-t-wipe) var(--lab-ease-wipe) both; }
+@keyframes lab-wipe{ 0%{transform:translateY(102%);} 45%,55%{transform:translateY(0);} 100%{transform:translateY(-102%);} }
+
+@media (prefers-reduced-motion:reduce){
+  html.js .lab-rv{ opacity:1; transform:none; transition:none; }
+  .lab-ticker .tk{ animation:none; }
+  .lab-veil, .lab-ping{ display:none; }
+}
