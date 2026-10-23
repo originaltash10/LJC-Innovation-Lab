@@ -684,3 +684,51 @@ html.js:not(.deck) .chrome-logo{display:none}
 .deck #s15 .two.finale{height:calc(100vh - 230px)}
 @media (max-height:760px){ .deck #s15{padding-bottom:84px} .deck #s15 .two.finale{height:calc(100vh - 170px);grid-template-rows:minmax(0,1fr);align-items:start} .deck #s15 .lab-ticker{display:none} .deck #s15 .lab-lede{display:none} .deck #s15 h2{margin-bottom:4px} .finale-asks{margin-top:8px} .finale-asks li{padding:6px 12px 7px} .finale-asks li h3{font-size:14px} .finale-asks li p{display:none} .finale-asks li .pick{margin-top:4px} .finale-asks li .pick button{padding:4px 8px;font-size:9px} .askstage{min-height:0;height:100%} .askhint p{display:none} }
 @media (max-width:899px){ #s15 .two.finale{grid-template-columns:1fr} .askstage{min-height:360px} }
+
+/* ---- registration crosses: four hairline marks boxing a key block on every sheet ---- */
+.xhb{position:relative}
+.xhb>.cx{position:absolute;width:15px;height:15px;z-index:3;pointer-events:none;opacity:0;transition:opacity .9s var(--lab-ease) .5s}
+.sheet.on .xhb>.cx,html.js:not(.deck) .xhb>.cx{opacity:1}
+.xhb>.cx.tl{left:-26px;top:-18px}.xhb>.cx.tr{right:-26px;top:-18px}.xhb>.cx.bl{left:-26px;bottom:-18px}.xhb>.cx.br{right:-26px;bottom:-18px}
+.steps.xhb>.cx.tl,.steps.xhb>.cx.bl{left:-14px}
+.plan.xhb>.cx.tl,.plan.xhb>.cx.tr{top:-22px}.plan.xhb>.cx.bl,.plan.xhb>.cx.br{bottom:-22px}
+.xhb-table>.cx.tl,.xhb-table>.cx.bl{left:-22px}.xhb-table>.cx.tr,.xhb-table>.cx.br{right:-22px}
+.cbars.xhb>.cx.tl,.cbars.xhb>.cx.bl{left:-20px}.cbars.xhb>.cx.tr,.cbars.xhb>.cx.br{right:-20px}
+@media (max-width:899px){ .xhb>.cx{display:none} }
+
+/* ---- faint wave photograph behind every sheet ---- */
+.deck-bg{position:fixed;inset:0;z-index:0;visibility:hidden;background:url("img/wave-bg.jpg?v=4") center/cover no-repeat;opacity:.1;pointer-events:none}
+html.js.deck.on-cover .deck-bg{visibility:visible}
+html.js:not(.deck) .deck-bg{position:absolute;min-height:100vh;visibility:visible}
+.sheet{background:var(--lab-bg)}
+#s00{background:transparent}
+.sheet.on{z-index:1}
+
+/* cover: text block + crosses vertically centred on the sheet */
+html.js.deck #s00 .cover-in{margin:auto 0}
+
+/* registration crosses: darker so they read against the background wash */
+.lab-cross.cx::before,.lab-cross.cx::after{background:rgba(12,25,38,.55)}
+
+/* process sheet: preview card fills the open space below the stepper */
+.peek-row{flex:1 0 auto;min-height:max-content;display:flex;align-items:stretch}
+.peek{width:100%;grid-template-columns:minmax(0,1.3fr) minmax(280px,1fr)}
+.peek-fr{height:auto;min-height:clamp(220px,calc(100vh - 560px),460px)}
+.peek-cap{padding:28px 34px 26px;gap:12px;justify-content:center}
+.peek-cap .lab-kicker{font-size:11px}
+.peek-cap p{font-size:clamp(16px,1.4vw,22px);line-height:1.4;font-weight:300}
+.peek-cap .peek-go{margin-top:18px}
+.peek-cap .peek-go .name{font-size:13px}
+.deck #s02{display:flex;flex-direction:column}
+.deck #s02 .peek-row{margin-top:24px}
+@media (max-width:899px){ .peek{grid-template-columns:1fr} .peek-fr{min-height:200px} }
+
+/* cost comparison: table top aligns with the bar chart card (below title + lede) */
+.two.cmpc{align-items:start}
+.cmpc-table{padding-top:var(--cmpc-top,0px)}
+
+/* cost comparison: breathing room between lede and the chart/table row */
+.two.cmpc .cbars{margin-top:28px}
+
+.ccost{height:auto}
+.ccost tr{height:auto}

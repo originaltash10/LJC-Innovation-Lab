@@ -127,7 +127,7 @@ window.ASSETS={"option_1_view_1.png":"img/full/option_1_view_1.jpg","option_1_vi
   function makeWall(o){
     var cv=o.canvas, ctx=cv.getContext("2d"), read=o.read, mode=o.mode, on=false, raf=null, W=0, H=0, sheet=cv.parentNode;
     var AX=-Math.PI/4, yaw=AX, yawT=AX, pitch=.52, layer=22, layerT=22, t0=0, lastMove=-1e9, offset=null, idle=true, drag=null;
-    var printed=0, printedT=0, band=-1, bands=4, doneFired=false;
+    var printed=0, printedT=0, band=-1, bands=4, doneFired=false, spinDir=1, lastX=null;
     function size(){ var r=cv.parentNode.getBoundingClientRect(); W=r.width; H=r.height; cv.width=W*devicePixelRatio; cv.height=H*devicePixelRatio; cv.style.width=W+"px"; cv.style.height=H+"px"; }
     addEventListener("resize",function(){ if(on) size(); });
     function local(e){ var r=cv.getBoundingClientRect(); return {x:e.clientX-r.left,y:e.clientY-r.top}; }
@@ -136,26 +136,27 @@ window.ASSETS={"option_1_view_1.png":"img/full/option_1_view_1.jpg","option_1_vi
     function endDrag(){ if(!drag) return; drag=null; idle=true; lastMove=performance.now(); }
     sheet.addEventListener("pointerup",endDrag); sheet.addEventListener("pointercancel",endDrag); sheet.addEventListener("pointerleave",endDrag);
     sheet.addEventListener("pointermove",function(e){ if(!on||!wallData) return; var p=local(e), now=performance.now(); lastMove=now;
-      if(drag){ yawT=drag.yaw+(p.x-drag.x)/W*Math.PI*2; idle=false; return; }
-      if(idle){ offset=yaw-(p.x/W-.5)*Math.PI; idle=false; } yawT=offset+(p.x/W-.5)*Math.PI;
+      if(lastX!==null&&Math.abs(p.x-lastX)>1) spinDir=p.x<lastX?1:-1; lastX=p.x;
+      if(drag){ yawT=drag.yaw-(p.x-drag.x)/W*Math.PI*2; idle=false; return; }
+      if(idle){ offset=yaw+(p.x/W-.5)*Math.PI; idle=false; } yawT=offset-(p.x/W-.5)*Math.PI;
       if(mode==="slice") layerT=Math.round((1-Math.min(1,Math.max(0,(p.y/H-.25)/.5)))*(wallData.curves.length-1)); });
     function draw(now){
       if(!on){ raf=null; return; }
       ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); ctx.clearRect(0,0,W,H);
       if(wallData){
         var n=wallData.curves.length, reveal, L=-1, bandSize=n/bands;
-        if(!drag&&now-lastMove>700){ idle=true; yawT=yaw+.004; } yaw+=(yawT-yaw)*(idle?1:drag?.25:.08);
+        if(!drag&&now-lastMove>700){ idle=true; yawT=yaw+.004*spinDir; if(mode==="slice"&&now-lastMove>1800) layerT=Math.round((Math.sin(now/5200)*.5+.5)*(n-1)); } yaw+=(yawT-yaw)*(idle?1:drag?.25:.08);
         if(mode==="slice"){ reveal=reduce?1:Math.min(1,(now-t0)/2000); layer+=(layerT-layer)*.2; L=Math.round(layer); }
         else { printed+=(printedT-printed)*(reduce?1:.045); if(printedT-printed<.02) printed=printedT; reveal=printed>0?(printed-1)/(n-1):-1; L=Math.round(printed)-1; }
         var HGT=2*wallData.aspect, DEP=2*wallData.depthRatio*1.6;
         var P=function(q,fy){ return proj(q[0]*2-1,(q[1]-.5)*DEP,fy*HGT); };
-        ctx.strokeStyle="rgba(12,25,38,.2)"; ctx.lineWidth=1; ctx.beginPath(); var g=[proj(-1.15,-.3,0),proj(1.15,-.3,0),proj(1.15,.3,0),proj(-1.15,.3,0)]; ctx.moveTo(g[0][0],g[0][1]); g.forEach(function(p){ ctx.lineTo(p[0],p[1]); }); ctx.closePath(); ctx.stroke();
+        ctx.strokeStyle="rgba(12,25,38,.3)"; ctx.lineWidth=1; ctx.beginPath(); var g=[proj(-1.15,-.3,0),proj(1.15,-.3,0),proj(1.15,.3,0),proj(-1.15,.3,0)]; ctx.moveTo(g[0][0],g[0][1]); g.forEach(function(p){ ctx.lineTo(p[0],p[1]); }); ctx.closePath(); ctx.stroke();
         for(var k=0;k<n;k++){ var fy=k/(n-1), c=wallData.curves[k], ghost=fy>reveal+1e-6;
           if(ghost&&mode==="slice") break;
           ctx.beginPath(); var dSum=0;
           for(var i=0;i<c.length;i++){ var p=P(c[i],fy); dSum+=p[2]; i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]); }
-          if(ghost){ ctx.strokeStyle="rgba(12,25,38,.06)"; ctx.lineWidth=1; ctx.stroke(); continue; }
-          var a=Math.max(.14,Math.min(.5,.58-(dSum/c.length-3.6)*.5)), f=0, hot=false;
+          if(ghost){ ctx.strokeStyle="rgba(12,25,38,.1)"; ctx.lineWidth=1; ctx.stroke(); continue; }
+          var a=Math.max(.3,Math.min(.72,.78-(dSum/c.length-3.6)*.5)), f=0, hot=false;
           if(mode==="slice"){ var dk=Math.abs(k-L); hot=dk===0; f=dk===0?1:dk<=3?(1-dk/4):0; }
           else if(band>=0){ var b0=Math.floor(band*bandSize), b1=Math.ceil((band+1)*bandSize)-1; if(k>=b0&&k<=b1){ var edge=Math.min(k-b0,b1-k); f=edge>=2?1:.5+edge*.25; } }
           ctx.strokeStyle=hot?"#2E6E99":f>0?"rgba(46,110,153,"+(a+(.9-a)*f).toFixed(2)+")":"rgba(12,25,38,"+a.toFixed(2)+")"; ctx.lineWidth=hot?2.2:1+f*.6; ctx.stroke(); }
@@ -175,7 +176,7 @@ window.ASSETS={"option_1_view_1.png":"img/full/option_1_view_1.jpg","option_1_vi
       setBand:function(b){ band=b; }
     };
   }
-  var coverWall=makeWall({canvas:document.getElementById("cvWall"),read:document.getElementById("wallRead"),mode:"slice"});
+  var coverWall=makeWall({canvas:document.getElementById("cvWall"),read:document.getElementById("wallRead"),mode:"slice", cx:.66, cy:.56, scw:.27, sch:.4});
   wallWaiters.push(function(){ /* cover starts its own clock on show */ });
   function cover(on){ on?coverWall.start():coverWall.stop(); }
   var askWall=null; // finale diagram is the wave-wall reveal module (ask-reveal.js)
@@ -402,6 +403,14 @@ window.ASSETS={"option_1_view_1.png":"img/full/option_1_view_1.jpg","option_1_vi
     rItems.forEach(function(d,i){ d.addEventListener("click",function(e){ e.stopPropagation(); setStage(i); }); });
     addEventListener("resize",function(){ var k=rItems.findIndex(function(d){ return d.classList.contains("on"); }); if(k>0) setStage(k); });
   }
+
+  /* ---------- sheet 12: align table top with the bar chart ---------- */
+  (function(){ var bars=document.querySelector(".two.cmpc .cbars"), sh=bars&&bars.closest(".sheet"), tbl=sh&&sh.querySelector(".cmpc-table"); if(!bars||!tbl) return;
+    function align(){ tbl.style.setProperty("--cmpc-top","0px"); var t=tbl.querySelector("table"); if(t) t.style.height=""; var off=bars.getBoundingClientRect().top-(t||tbl).getBoundingClientRect().top; tbl.style.setProperty("--cmpc-top",Math.max(0,Math.round(off))+"px");
+      // stretch the table so its bottom meets the bottom of the notes boxes on the left
+      var col=bars.parentNode, notes=col.querySelector(".pnotes"), bottom=(notes||bars).getBoundingClientRect().bottom; if(t){ var tr=t.getBoundingClientRect(); var want=bottom-tr.top; if(want>tr.height) t.style.height=Math.round(want)+"px"; } }
+    align(); addEventListener("resize",align); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(align); setTimeout(align,600);
+    new MutationObserver(function(){ if(sh.classList.contains("on")) setTimeout(align,50); }).observe(sh,{attributes:true,attributeFilter:["class"]}); })();
 
   /* ---------- sheet 12: cost comparison column pick ---------- */
   var ccost=document.getElementById("ccost");
