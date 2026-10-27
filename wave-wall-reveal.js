@@ -30,7 +30,7 @@ export async function initWaveWallDiagram(userConfig = {}) {
   if (!container) throw new Error(`No element with id "${cfg.containerId}"`);
 
   // --- renderer / scene / camera -------------------------------------------------
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: cfg.background === null });
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: cfg.background === null, preserveDrawingBuffer: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;

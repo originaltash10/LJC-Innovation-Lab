@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="js" data-smooth="on" data-cursor="on" data-motion="full">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,296 +7,220 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="ljc-lab.css">
-<link rel="stylesheet" href="deck.css">
+<link rel="stylesheet" href="scroll2.css">
 <script>document.documentElement.classList.add("js");</script>
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.184.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.184.0/examples/jsm/"}}</script>
 </head>
-<body>
-<div class="lab">
+<body class="lab">
+<div class="lab v2">
 
-<div class="prog" id="prog"></div>
-<div class="lab-veil" id="veil1"></div>
-<div class="lab-veil v2" id="veil2"></div>
-<div class="deck-bg" aria-hidden="true"></div>
-<div class="cur" id="cur" aria-hidden="true"><span class="ln"></span><span class="ln v"></span><span class="ring"></span></div>
-<img class="chrome-logo" id="chromeLogo" src="img/ljc-logo-ink.png" alt="LJC Design &amp; Engineering" aria-hidden="true">
-<button class="burger" id="burger" aria-label="Open index"><span></span><span></span><span></span></button>
+<div class="hud" aria-hidden="false">
+  <img class="logo" src="img/opt/ljc-logo-ink.webp" alt="LJC Design &amp; Engineering">
+  <div class="sec"><b>LJC / Lab</b><span class="t" id="hudT">A layered approach</span></div>
+  <button class="burger" id="burger" aria-label="Open index"><span></span><span></span><span></span></button>
+  <nav class="dots" id="hudDots" aria-label="Sections"></nav>
+  <div class="layer"><i id="hudG"></i><div><b id="hudL">Layer 000 / 046</b>Print progress</div></div>
+  <div class="cnt"><b id="hudN"><span>00 / 10</span></b>Section</div>
+  <div class="cue"><i></i>Scroll to print</div>
+</div>
+<div class="cur hide" id="cur" aria-hidden="true"><span class="ring"></span><span class="dot"></span><span class="lbl"></span></div>
 
-<section class="sheet" id="s00" data-title="Cover" data-screen-label="00">
-  <canvas id="cvWall" aria-hidden="true"></canvas>
-  <div class="sheet-head">
-    <span class="lab-eyebrow">LJC Innovation Lab <span class="n">/</span> Prototype 01</span>
-    <div class="lab-ticks"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    <span class="lab-kicker">October 2026</span>
-  </div>
-  <div class="cover-in">
-    <span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-    <img class="cover-logo lab-rv" src="img/ljc-logo-ink.png" alt="LJC Design &amp; Engineering">
-    <h1 class="lab-display-1 lab-rv">A layered<br><em>approach</em></h1>
-    <p class="lab-kicker lab-rv" style="margin-top:18px;font-size:13px;letter-spacing:.22em">Activation through 3D printed innovation</p>
-    <p class="lab-lede lab-rv" style="max-width:500px;margin-top:22px">One architectural component, taken from AI-assisted sketch to a full-scale 3D-printed prototype — with the St. Louis Opera Theater as the testing ground.</p>
-  </div>
-  <div class="cover-read lab-rv" id="wallRead">Layer 23 / 46</div>
-  <div class="cover-meta lab-rv">
-    <div>Project<b>St. Louis Opera Theater</b></div>
-    <div>Component<b>Feature wall, main stair</b></div>
-    <div>Method<b>Robotic 3D printing</b></div>
-    <div>Outcome<b>1:1 prototype, RBB lobby</b></div>
-    <div class="hint"><span>Begin</span><span class="kbd">→</span><span>Index</span><span class="kbd">M</span></div>
+<section class="sc" id="c0" data-title="A layered approach" data-kicker="Cover" data-screen-label="00">
+  <div class="pin">
+    <canvas id="cvWall" class="axon" aria-hidden="true"></canvas>
+    <div class="read" id="wallRead">Layer 46 / 46<br><span>Z 9.14 m · 8 in layer · built · drag to turn</span></div>
+    <div class="txt xhb">
+      <span class="lab-cross cx c-tl"></span><span class="lab-cross cx c-tr"></span><span class="lab-cross cx c-bl"></span><span class="lab-cross cx c-br"></span>
+      <span class="lab-eyebrow" data-rv="fade">LJC Innovation Lab <span class="n">/</span> St. Louis Opera Theater</span>
+      <h1 class="tl">A layered <em>approach</em></h1>
+      <p class="lede" data-rv>One architectural component, taken from AI-assisted sketch to a full-scale 3D-printed prototype — with the Opera as the testing ground.</p>
+      <div class="meta" data-stagger>
+        <div>Project<b>St. Louis Opera Theater</b></div>
+        <div>Component<b>Feature wall, main stair</b></div>
+        <div>Method<b>Robotic 3D printing</b></div>
+        <div>Outcome<b>1:1 prototype, RBB lobby</b></div>
+      </div>
+    </div>
+    <div class="plate" aria-hidden="true"></div>
+    <div class="frame" data-cur="Scroll">
+      <img src="img/opt/krea-stair-wall.webp" alt="Rendering of the printed wave wall wrapping the grand stair">
+      <span class="lab-tag">Render 01 / 03 · Wave wall</span>
+      <div class="lab-corners"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="shade" aria-hidden="true"></div>
+    <div class="scan" aria-hidden="true"><span>Layer 000 / 046</span></div>
+    <div class="over"><span class="lab-kicker">The wall, built</span><h2>Printed at <em>full scale</em></h2><p>Layer lines, ridges and real depth at hand height. What you see is how it was made.</p></div>
   </div>
 </section>
 
-<section class="sheet" id="s01" data-title="Contents" data-screen-label="01">
-  <div class="sheet-head"><span class="lab-eyebrow">Contents</span></div>
-  <h2 class="lab-display-2 lab-rv">Fifteen sheets, four <em>decisions</em></h2>
-  <p class="lab-lede lab-rv">Where we are, what we found, and what we need from you to get to a full-scale print.</p>
-  <div class="cols lab-rv xhb"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-    <div>
-      <a class="lab-index" data-go="2" href="#s02"><span class="num">02</span><span class="name">Process</span><span class="lab-kicker">Method</span></a>
-      <a class="lab-index" data-go="3" href="#s03"><span class="num">03</span><span class="name">Why the Opera</span><span class="lab-kicker">Testing ground</span></a>
-      <a class="lab-index" data-go="4" href="#s04"><span class="num">04</span><span class="name">Location analysis</span><span class="lab-kicker">Decision 1</span></a>
-      <a class="lab-index" data-go="5" href="#s05"><span class="num">05</span><span class="name">Conceptual studies in form</span><span class="lab-kicker">Decision 2</span></a>
-      <a class="lab-index" data-go="6" href="#s06"><span class="num">06</span><span class="name">The grand staircase</span><span class="lab-kicker">Compare</span></a>
-      <a class="lab-index" data-go="7" href="#s07"><span class="num">07</span><span class="name">The stair in 3D</span><span class="lab-kicker">Model</span></a>
-      <a class="lab-index" data-go="8" href="#s08"><span class="num">08</span><span class="name">Fabricators</span><span class="lab-kicker">Decision 3</span></a>
+<section class="sc" id="c1" data-title="Process" data-kicker="Method" data-screen-label="01">
+  <div class="pin">
+  <div class="sc-head"><span class="lab-eyebrow">Process <span class="n">/</span> Method</span><span class="lab-kicker">01 · scroll to stack the steps</span></div>
+  <div class="grid">
+    <div class="stick">
+      <div class="big" aria-hidden="true"><span class="on">01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span></div>
+      <h2 class="tl sm">Six steps, one <em>prototype</em></h2>
+      <p class="lede" data-rv>The lab takes a single architectural component the whole way: from AI-assisted exploration to a physical object people can touch.</p>
+      <div class="prog" data-rv="fade"><span>Step 01 / 06</span><i></i></div>
     </div>
-    <div>
-      <a class="lab-index" data-go="9" href="#s09"><span class="num">09</span><span class="name">Comparison</span><span class="lab-kicker">Decision 3</span></a>
-      <a class="lab-index" data-go="10" href="#s10"><span class="num">10</span><span class="name">Printerior proposal</span><span class="lab-kicker">Mockup ROM</span></a>
-      <a class="lab-index" data-go="11" href="#s11"><span class="num">11</span><span class="name">Pikus proposal</span><span class="lab-kicker">Mockup ROM</span></a>
-      <a class="lab-index" data-go="12" href="#s12"><span class="num">12</span><span class="name">Branch proposal</span><span class="lab-kicker">Mockup ROM</span></a>
-      <a class="lab-index" data-go="13" href="#s13"><span class="num">13</span><span class="name">Cost comparison</span><span class="lab-kicker">Decision 3</span></a>
-      <a class="lab-index" data-go="14" href="#s14"><span class="num">14</span><span class="name">Road to 1:1</span><span class="lab-kicker">Decision 4</span></a>
-      <a class="lab-index" data-go="15" href="#s15"><span class="num">15</span><span class="name">The ask</span><span class="lab-kicker">Today</span></a>
-    </div>
-  </div>
-</section>
-
-<section class="sheet" id="s02" data-title="Process" data-screen-label="02">
-  <div class="lab-ghost">Method</div>
-  <div class="sheet-head"><span class="lab-eyebrow">Process</span><span class="lab-kicker">Method</span></div>
-  <h2 class="lab-display-2 lab-rv">Six steps, one <em>prototype</em></h2>
-  <div class="lede-row lab-rv">
-    <p class="lab-lede" style="margin-bottom:0">The lab takes a single architectural component the whole way: from AI-assisted exploration to a physical object people can touch. Select a step to read it.</p>
-    <div class="goal"><span class="lab-kicker">Goal</span><p>Build a <em>prototype</em>, not a rendering.</p></div>
-  </div>
-  <div class="steps lab-rv xhb" id="steps"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-    <div class="rail"><i id="rail"></i></div>
-    <ol>
-      <li class="on"><span class="lab-node on"></span><span class="k">Step 01</span><div class="t">Explore and refine</div><p class="d">Choose one architectural component and push it with AI-assisted design and workflows.</p></li>
-      <li><span class="lab-node"></span><span class="k">Step 02</span><div class="t">Make it printable</div><p class="d">Translate the concept into fabrication-ready 3D geometry: panelised, toleranced, toolpath-aware.</p></li>
-      <li><span class="lab-node"></span><span class="k">Step 03</span><div class="t">Print small, in house</div><p class="d">Test and improve the component through iterative small-scale 3D-printed mockups on our own printer.</p></li>
-      <li><span class="lab-node"></span><span class="k">Step 04</span><div class="t">Bring in a manufacturer</div><p class="d">Evaluate materials, scalability and fabrication feasibility with a partner, with cost in the room from day one.</p></li>
-      <li><span class="lab-node"></span><span class="k">Step 05</span><div class="t">Make it repeatable</div><p class="d">Establish a workflow that connects design exploration to physical production, so the next component is faster.</p></li>
-      <li><span class="lab-node"></span><span class="k">Step 06</span><div class="t">Install at 1:1</div><p class="d">Print and install a full-scale prototype in the RBB lobby, where the whole office walks past it.</p></li>
+    <ol class="steps">
+      <li class="on"><span class="k">Step 01</span><div><h3>Explore and refine</h3><p>Choose one architectural component and push it with AI-assisted design and workflows.</p></div></li>
+      <li><span class="k">Step 02</span><div><h3>Make it printable</h3><p>Translate the concept into fabrication-ready 3D geometry: panelised, toleranced, toolpath-aware.</p></div></li>
+      <li><span class="k">Step 03</span><div><h3>Print small, in house</h3><p>Test and improve the component through iterative small-scale 3D-printed mockups on our own printer.</p></div></li>
+      <li><span class="k">Step 04</span><div><h3>Bring in a manufacturer</h3><p>Evaluate materials, scalability and fabrication feasibility with a partner, with cost in the room from day one.</p></div></li>
+      <li><span class="k">Step 05</span><div><h3>Make it repeatable</h3><p>Establish a workflow that connects design exploration to physical production, so the next component is faster.</p></div></li>
+      <li><span class="k">Step 06</span><div><h3>Install at 1:1</h3><p>Print and install a full-scale prototype in the RBB lobby, where the whole office walks past it.</p></div></li>
     </ol>
   </div>
-  <div class="peek-row lab-rv">
-    <div class="peek" id="peek">
-      <div class="peek-fr">
-        <img data-s="0" class="on" src="img/10.png" alt="Curtain study, striated field">
-        <img data-s="1" src="img/17.png" alt="Section through the stair wall">
-        <img data-s="2" src="img/13.png" alt="Dramatic arc study with three acts labelled">
-        <img data-s="3" src="img/20.jpg" alt="Robotic arm printing a wave panel">
-        <img data-s="4" src="img/18.png" alt="Wave study seen from the lobby">
-        <img data-s="5" src="img/28.webp" alt="RBB lobby">
+  </div>
+</section>
+
+<section class="cover long curtain" id="v0" data-screen-label="02-cover">
+  <div class="cv"><div class="slab">
+    <img src="img/opt/curtain-closed.webp" alt="">
+    <img class="open" src="img/opt/curtain-open.webp" alt="">
+    <canvas class="frames" aria-hidden="true"></canvas>
+    <video class="src" muted playsinline preload="auto" data-src="img/curtain.mp4" aria-hidden="true"></video>
+    <div class="shade"></div>
+    <div class="ct"><span class="lab-kicker">02 / Testing ground</span><h2>Why the Opera<em>.</em></h2><p>Story, material and spectacle. The curtain goes up on the three things a printed wall has to carry.</p></div>
+    <div class="white"></div>
+  </div></div>
+</section>
+
+<section class="sc" id="c2" data-title="Why the Opera" data-kicker="Testing ground" data-screen-label="02">
+  <div class="sc-head"><span class="lab-eyebrow">Why the Opera <span class="n">/</span> Testing ground</span><span class="lab-kicker">02</span></div>
+  <div class="grid">
+    <div>
+      <h2 class="tl">A theater is the right <em>test</em></h2>
+      <p class="lede" data-rv>Opera is built on story, material and spectacle. Those are exactly the three things we want a printed component to prove it can carry.</p>
+      <div class="proofs" data-stagger>
+        <div><span class="n">01</span><div><h3>The wall tells the building's story</h3><p>Not a finish applied at the end, but a surface generated from the ideas of the house: curtain, drama, sound.</p></div></div>
+        <div><span class="n">02</span><div><h3>The print process becomes the ornament</h3><p>Layer lines, ridges and real depth at hand height. <b>What you see is how it was made.</b></p></div></div>
+        <div><span class="n">03</span><div><h3>A surface that pulls people through</h3><p>Full-height, legible from across the lobby, and changing as you climb past it.</p></div></div>
+      </div>
+    </div>
+    <div data-rv="scale">
+      <div class="fr" style="margin-right:14px">
+        <div class="ph" data-mask="up" data-win><img loading="lazy" decoding="async" src="img/opt/01.webp" alt="House curtain of an opera theater"></div>
+        <span class="lab-tag">Reference · House curtain</span>
         <div class="lab-corners"><i></i><i></i><i></i><i></i></div>
       </div>
-      <div class="peek-cap">
-        <span class="lab-kicker" id="peekK">Preview</span>
-        <p id="peekP">Conceptual studies in form, generated from the house</p>
-        <a class="lab-index peek-go" id="peekGo" data-go="5" href="#s05"><span class="num">05</span><span class="name">Conceptual studies in form</span></a>
-      </div>
+      <div class="lab-cap cap"><span class="lab-kicker">Reference</span><p>The house curtain — fold, weight, and the pause before the story starts.</p></div>
     </div>
   </div>
 </section>
 
-<section class="sheet" id="s03" data-title="Why the Opera" data-screen-label="03">
-  <div class="sheet-head"><span class="lab-eyebrow">Why the Opera</span><span class="lab-kicker">Testing ground</span></div>
-  <canvas id="cv3" aria-hidden="true"></canvas>
-  <div class="two">
-    <div class="xhb"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-      <h2 class="lab-display-2 lab-rv">A theater is the right <em>test</em></h2>
-      <p class="lab-lede lab-rv">Opera is built on story, material and spectacle. Conceptual studies in form for the printed wall, each drawn from a different part of the house. Select one, or let it cycle.</p>
-      <div class="clist lab-rv" id="clist">
-        <button class="lab-index on" data-k="0"><span class="num">01</span><span class="name">Opera curtain</span><span class="lab-kicker">Fold</span><span class="d">Taking inspiration from the wave forms of an opera curtain — gathered, weighted, held still before the story starts.</span></button>
-        <button class="lab-index" data-k="1"><span class="num">02</span><span class="name">Dramatic arc</span><span class="lab-kicker">Story</span><span class="d">Abstracting the three parts of a dramatic arc — exposition, climax, resolution — into a surface that builds and settles.</span></button>
-        <button class="lab-index" data-k="2"><span class="num">03</span><span class="name">Sound waves</span><span class="lab-kicker">Acoustic</span><span class="d">Showing the amplitude, movement and bounce of sound in a space, mapped into the depth of the wall.</span></button>
+<section class="sc" id="c3" data-title="Conceptual studies in form" data-kicker="Decision 2" data-screen-label="03" style="--pw:min(34vw,calc((100vh - 400px) * .8),520px)">
+  <div class="pin">
+    <div class="sc-head"><span class="lab-eyebrow">Conceptual studies <span class="n">/</span> Three sources for the geometry</span><span class="lab-kicker">03 · scroll to turn each study</span></div>
+    <div class="film" data-cur="Scroll">
+      <div class="cpanel">
+        <div class="ph"><div class="card">
+          <div class="face f"><img loading="lazy" decoding="async" class="a" src="img/opt/web_ref-curtain.webp" alt="Opera house curtain, reference"><img loading="lazy" decoding="async" class="c" src="img/opt/10.webp" alt="Curtain study: striated field, ambient occlusion"><span class="lab-tag"><span class="ta">Study 01 / 03 · Reference</span><span class="tc">Study 01 / 03 · Ambient occlusion</span></span></div>
+          <div class="face b"><img loading="lazy" decoding="async" src="img/opt/09.webp" alt="Curtain study: vertical folds"><span class="lab-tag">Study 01 / 03 · Render</span></div>
+        </div></div>
+        <div class="cp"><span class="lab-kicker">01 · Opera curtain</span><div><b>The curtain, frozen</b><p>The gathered folds of a house curtain, held still in print. Soft drape reads from across the lobby; the ridges land at hand height.</p><span class="side">01 · Reference</span></div></div>
+      </div>
+      <div class="cpanel">
+        <div class="ph"><div class="card">
+          <div class="face f"><img loading="lazy" decoding="async" class="a" src="img/opt/web_ref-acts.webp" alt="Three acts on stage: exposition, climax, resolution"><img loading="lazy" decoding="async" class="c" src="img/opt/12.webp" alt="Arc study: turbulence rising, ambient occlusion"><span class="lab-tag"><span class="ta">Study 02 / 03 · Reference</span><span class="tc">Study 02 / 03 · Ambient occlusion</span></span></div>
+          <div class="face b"><img loading="lazy" decoding="async" src="img/opt/13.webp" alt="Dramatic arc study with three acts"><span class="lab-tag">Study 02 / 03 · Render</span></div>
+        </div></div>
+        <div class="cp"><span class="lab-kicker">02 · Dramatic arc</span><div><b>Three acts in relief</b><p>Calm layer lines at the base build into turbulence at the landing and resolve as you reach the top. You climb through the story.</p><span class="side">01 · Reference</span></div></div>
+      </div>
+      <div class="cpanel">
+        <div class="ph"><div class="card">
+          <div class="face f"><img loading="lazy" decoding="async" class="a" src="img/opt/web_ref-sound.webp" alt="Sound wave, reference"><img loading="lazy" decoding="async" class="c" src="img/opt/14.webp" alt="Sound study: vertical pulse, ambient occlusion"><span class="lab-tag"><span class="ta">Study 03 / 03 · Reference</span><span class="tc">Study 03 / 03 · Ambient occlusion</span></span></div>
+          <div class="face b"><img loading="lazy" decoding="async" src="img/opt/15.webp" alt="Sound wave study: interference field"><span class="lab-tag">Study 03 / 03 · Render</span></div>
+        </div></div>
+        <div class="cp"><span class="lab-kicker">03 · Sound waves</span><div><b>Sound made solid</b><p>The amplitude, movement and bounce of sound in the room, mapped into surface depth. Every ridge is a continuous toolpath.</p><span class="side">01 · Reference</span></div></div>
       </div>
     </div>
-    <div class="cstage lab-rv" id="cstage">
-      <div class="lab-frame">
-        <div class="tint"></div>
-        <div class="ph">
-          <img data-k="0" class="on" src="img/01.jpg" alt="House curtain of an opera theater" data-cap="Opera curtain · The house curtain: fold, weight, and the moment before the story">
-          <img data-k="1" src="img/02.png" alt="Three acts of an opera on one stage" data-cap="Dramatic arc · Exposition, climax, resolution on one stage">
-          <img data-k="2" src="img/39.png" alt="Sound wave rendered as a ribbon of light" data-cap="Sound waves · Amplitude, movement and bounce of sound in a space">
-          <span class="lab-tag" id="cTag">01 · Opera curtain</span>
-          <div class="lab-corners"><i></i><i></i><i></i><i></i></div>
-        </div>
-      </div>
-      <div class="cbar">
-        <div class="lab-cap">
-          <span class="lab-kicker" id="cK">Reference</span>
-          <p class="pane on" data-k="0">The house curtain — fold, weight, and the pause before the story starts.</p>
-          <p class="pane" data-k="1">Exposition, climax, resolution — one stage, three states. The wall reads the same way as you climb.</p>
-          <p class="pane" data-k="2">Where the voice hits the wall, the wall responds. Every ridge is a continuous toolpath.</p>
-        </div>
-        <div class="ctl">
-          <div class="lab-dots" id="cDots"><span class="on"></span><span></span><span></span></div>
-          <button class="lab-btn" id="cPrev" aria-label="Previous concept">←</button>
-          <button class="lab-btn" id="cNext" aria-label="Next concept">→</button>
-        </div>
-      </div>
-    </div>
+    <div class="rail"><span class="on">01 Curtain<i></i></span><span>02 Dramatic arc<i></i></span><span>03 Sound waves<i></i></span></div>
   </div>
 </section>
 
-<section class="sheet" id="s04" data-title="Location analysis" data-screen-label="04">
-  <div class="sheet-head"><span class="lab-eyebrow">Location analysis</span><span class="lab-kicker">Decision 1</span></div>
-  <h2 class="lab-display-2 lab-rv">Three prime <em>locations</em></h2>
-  <p class="lab-lede lab-rv">We analyzed the current plans for a wall that is tall, seen by everyone, and shaped in a way that helps the concept. Pick a location on the plan.</p>
-  <div class="two site-row">
-    <div>
-      <div class="plan lab-rv xhb" id="plan"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span><div class="pin">
-        <img src="img/04.png" alt="Ground floor plan of the St. Louis Opera Theater">
-        <button class="hot" style="left:86%;top:79%" data-site="entry" aria-label="Main entrance exterior wall">A</button>
-        <button class="hot" style="left:81.5%;top:18%" data-site="bar" aria-label="Bar wall">B</button>
-        <button class="hot on" style="left:73%;top:74%" data-site="stair" aria-label="Main staircase wall">C</button>
+<section class="cover long" id="v1" data-screen-label="04-cover">
+  <div class="cv"><div class="slab">
+    <img src="img/opt/location-stair.webp" alt="">
+    <canvas aria-hidden="true"></canvas>
+    <div class="shade"></div>
+    <div class="ct"><span class="lab-kicker">04 / Decision 1</span><h2>Location<em>.</em></h2><p>Three walls in the current plans could carry the component. One of them does everything we need.</p></div>
+  </div></div>
+</section>
+
+<section class="sc" id="c4" data-title="Location analysis" data-kicker="Decision 1" data-screen-label="04">
+  <div class="pin">
+    <div class="left">
+      <div class="sc-head" style="margin-bottom:0"><span class="lab-eyebrow">Location analysis <span class="n">/</span> Three prime walls</span><span class="lab-kicker">04</span></div>
+      <h2 class="tl sm">Tall, seen by everyone, shaped for the <em>concept</em></h2>
+      <p class="lede" data-rv style="max-width:460px;margin-top:0">We analyzed the current plans for a wall that meets all three. Keep scrolling, or pick a site on the plan.</p>
+      <div class="sites" data-rv="fade" style="margin-top:0">
+        <button data-site="entry"><span class="n">A</span><div><h3>Main entrance, exterior</h3><div class="d"><div><p>A two-storey curved facade under the canopy. The most public of the three, and the most exposed.</p><ul><li>Street-facing: first thing a visitor sees</li><li>Exterior exposure adds material, UV and weathering constraints</li><li>Height is capped by the canopy</li></ul></div></div></div></button>
+        <button data-site="bar"><span class="n">B</span><div><h3>Bar wall</h3><div class="d"><div><p>A curved two-level wall facing the lounge and the glazing beyond.</p><ul><li>Intimate, close-range viewing while people wait</li><li>Partly covered by bar fit-out and equipment</li><li>Shorter wall, read mostly from one side</li></ul></div></div></div></button>
+        <button class="on" data-site="stair"><span class="n">C</span><div><h3>Main staircase</h3><div class="d"><div><p>The wall that wraps the feature stair from Level 1 to Level 3.</p><ul><li>Runs the full height of the space</li><li>Highly visible from the lobby, the stair and both landings</li><li>The curve at the intermediate landing gives the concept a natural turn</li></ul></div></div></div></button>
+      </div>
+      <div class="plan" data-rv><span class="lab-kicker">Ground floor plan · pick a site</span><div class="in">
+        <img loading="lazy" decoding="async" src="img/opt/plan-ground.webp" alt="Ground floor plan of the St. Louis Opera Theater">
+        <button class="hot" style="left:95%;top:70%" data-site="entry" aria-label="Main entrance exterior wall">A</button>
+        <button class="hot" style="left:86.8%;top:28.8%" data-site="bar" aria-label="Bar wall">B</button>
+        <button class="hot on" style="left:80.7%;top:75%" data-site="stair" aria-label="Main staircase wall">C</button>
       </div></div>
-      <div class="site-opts lab-rv" id="siteOpts">
-        <button data-site="entry"><span class="lab-kicker">A</span><span class="n">Main entrance, exterior</span></button>
-        <button data-site="bar"><span class="lab-kicker">B</span><span class="n">Bar wall</span></button>
-        <button class="on" data-site="stair"><span class="lab-kicker">C</span><span class="n">Main staircase</span></button>
-      </div>
     </div>
-    <div class="axon lab-rv">
-      <div class="stage">
-        <img data-site="entry" src="img/05.png" alt="Axon of the main entrance exterior wall">
-        <img data-site="bar" src="img/06.png" alt="Axon of the bar wall">
-        <img data-site="stair" class="on" src="img/07.png" alt="Axon of the main staircase wall">
+    <div class="right">
+      <div class="stage" data-rv="scale">
+        <img loading="lazy" decoding="async" class="ax" data-site="entry" src="img/opt/05.webp" alt="Axon of the main entrance exterior wall">
+        <img loading="lazy" decoding="async" class="ax" data-site="bar" src="img/opt/06.webp" alt="Axon of the bar wall">
+        <img loading="lazy" decoding="async" class="ax on" data-site="stair" src="img/opt/07.webp" alt="Axon of the main staircase wall">
         <span class="lab-tag" id="axonTag">C · Main staircase</span>
-        <span class="lab-tag rec" id="axonRec">Recommended</span>
-      </div>
-      <div class="why">
-        <div class="pane" data-site="entry">
-          <h3 class="lab-display-3">Main entrance, exterior</h3>
-          <p class="lab-body">A two-storey curved facade under the canopy. The most public of the three, and the most exposed.</p>
-          <ul><li>Street-facing: first thing a visitor sees</li><li>Exterior exposure adds material, UV and weathering constraints</li><li>Height is capped by the canopy</li></ul>
-        </div>
-        <div class="pane" data-site="bar">
-          <h3 class="lab-display-3">Bar wall</h3>
-          <p class="lab-body">A curved two-level wall facing the lounge and the glazing beyond.</p>
-          <ul><li>Intimate, close-range viewing while people wait</li><li>Partly covered by bar fit-out and back-of-bar equipment</li><li>Shorter wall, read mostly from one side</li></ul>
-        </div>
-        <div class="pane on" data-site="stair">
-          <h3 class="lab-display-3">Main staircase</h3>
-          <p class="lab-body">The wall that wraps the feature stair from Level 1 to Level 3.</p>
-          <ul><li>Runs the full height of the space</li><li>Highly visible from the lobby, the stair and both landings</li><li>The curve at the intermediate landing gives the concept a natural turn</li><li>Seen up close and at a distance, moving past it</li></ul>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sheet" id="s05" data-title="Conceptual studies in form" data-screen-label="05">
-  <div class="sheet-head"><span class="lab-eyebrow">Conceptual studies in form</span><span class="lab-kicker">Decision 2</span></div>
-  <h2 class="lab-display-2 lab-rv">Three ways to interpret the <em>opera</em></h2>
-  <p class="lab-lede lab-rv">Each concept is a different source for the geometry. All three are generated parametrically, so panel size, depth and density stay open until we print.</p>
-  <div class="tabs lab-rv xhb" id="tabs" role="tablist"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-    <button class="on" role="tab" data-c="0"><span class="num">01</span>Opera curtain</button>
-    <button role="tab" data-c="1"><span class="num">02</span>Dramatic arc</button>
-    <button role="tab" data-c="2"><span class="num">03</span>Sound waves</button>
-  </div>
-  <div class="concept on lab-rv" data-c="0">
+<section class="sc" id="c5" data-title="The grand staircase" data-kicker="Compare" data-screen-label="05">
+  <div class="sc-head"><span class="lab-eyebrow">The grand staircase <span class="n">/</span> Two studies, same camera</span><span class="lab-kicker">05</span></div>
+  <div class="grid">
     <div>
-      <h3 class="lab-display-2" style="font-size:clamp(24px,2.6vw,36px)">The curtain, frozen</h3>
-      <p class="lab-lede">The gathered folds of a house curtain, held still in print. Soft drape reads from across the lobby; the ridges land at hand height.</p>
-      <p class="lab-body">Three studies, from literal swag to a pure striated field. The middle one is the strongest in the stair — it reads as fabric without copying one.</p>
+      <h2 class="tl">Curtain or <em>wave</em></h2>
+      <p class="lede" data-rv>Drag the handle between the curtain study and the wave study. Switch cameras under the image.</p>
+      <p class="lede" data-rv style="font-size:14px;margin-top:16px">Panel seams shown as drawn — final joints follow the chosen partner's print bed.</p>
     </div>
-    <div class="studies">
-      <figure><div class="ph"><img src="img/08.png" alt="Curtain study 1: draped swags" data-cap="Curtain · Study 01 — draped swags"></div><figcaption>Study 01 — Swag</figcaption></figure>
-      <figure><div class="ph"><img src="img/09.png" alt="Curtain study 2: vertical folds" data-cap="Curtain · Study 02 — vertical folds"></div><figcaption>Study 02 — Fold</figcaption></figure>
-      <figure><div class="ph"><img src="img/10.png" alt="Curtain study 3: striated field" data-cap="Curtain · Study 03 — striated field"></div><figcaption>Study 03 — Field</figcaption></figure>
-    </div>
-  </div>
-  <div class="concept" data-c="1">
-    <div>
-      <h3 class="lab-display-2" style="font-size:clamp(24px,2.6vw,36px)">Three acts in relief</h3>
-      <p class="lab-lede">Exposition, conflict, catharsis. Calm layer lines at the base build into turbulence at the landing and resolve as you reach the top.</p>
-      <p class="lab-body">The arc maps naturally onto the stair: you climb through the story. Hover the panels to trace it.</p>
-      <div class="arc-key" id="arcKey"><span data-a="0"><b>Act I</b>Exposition</span><span data-a="1"><b>Act II</b>Conflict</span><span data-a="2"><b>Act III</b>Catharsis</span></div>
-    </div>
-    <div class="studies">
-      <figure data-a="0"><div class="ph"><img src="img/11.png" alt="Arc study 1: calm horizontal lines" data-cap="Dramatic arc · Study 01 — exposition"></div><figcaption>Study 01 — Build</figcaption></figure>
-      <figure data-a="1"><div class="ph"><img src="img/12.png" alt="Arc study 2: turbulence rising" data-cap="Dramatic arc · Study 02 — conflict"></div><figcaption>Study 02 — Break</figcaption></figure>
-      <figure data-a="2"><div class="ph"><img src="img/13.png" alt="Arc study 3: labelled exposition, conflict, catharsis" data-cap="Dramatic arc · Study 03 — the full arc"></div><figcaption>Study 03 — Resolve</figcaption></figure>
-    </div>
-  </div>
-  <div class="concept" data-c="2">
-    <div>
-      <h3 class="lab-display-2" style="font-size:clamp(24px,2.6vw,36px)">Sound made solid</h3>
-      <p class="lab-lede">The amplitude, movement and bounce of sound in the room, mapped into surface depth. Where the voice would hit the wall, the wall responds.</p>
-      <p class="lab-body">The most abstract of the three, and the one that most directly belongs to an opera house. It also prints cleanly: every ridge is a continuous toolpath.</p>
-    </div>
-    <div class="studies">
-      <figure><div class="ph"><img src="img/14.png" alt="Sound study 1: vertical pulse" data-cap="Sound waves · Study 01 — pulse"></div><figcaption>Study 01 — Pulse</figcaption></figure>
-      <figure><div class="ph"><img src="img/15.png" alt="Sound study 2: interference field" data-cap="Sound waves · Study 02 — interference"></div><figcaption>Study 02 — Interference</figcaption></figure>
-      <figure><div class="ph"><img src="img/16.png" alt="Sound study 3: chevron bounce" data-cap="Sound waves · Study 03 — bounce"></div><figcaption>Study 03 — Bounce</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<section class="sheet" id="s06" data-title="The grand staircase" data-screen-label="06">
-  <div class="sheet-head"><span class="lab-eyebrow">The grand staircase</span><span class="lab-kicker">Compare</span></div>
-  <div class="two">
-    <div class="side xhb"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-      <div>
-        <h2 class="lab-display-2 lab-rv">Three studies, same <em>camera</em></h2>
-        <p class="lab-lede lab-rv" style="margin-bottom:0">Pick a study for each side of the handle, then drag to compare. Switch cameras under the image.</p>
-      </div>
-      <div class="lab-cap lab-rv" style="position:relative;margin:4px 10px 0 0"><span class="lab-kicker">Section</span><p>Three levels, one surface. The panels follow the curve of the intermediate landing.</p></div>
-      <p class="note lab-rv" style="margin-top:6px">Panel seams shown as drawn <b>—</b> final joints follow the chosen partner's print bed.</p>
-    </div>
-    <div>
-      <div class="pick-row lab-rv">
-        <div class="pick-side a" id="pickA"><span class="lab-kicker">Left</span><button data-o="1" class="on">01 Curtain</button><button data-o="2">02 Wave</button><button data-o="3">03 Arc</button></div>
-        <div class="pick-side b" id="pickB"><span class="lab-kicker">Right</span><button data-o="1">01 Curtain</button><button data-o="2" class="on">02 Wave</button><button data-o="3">03 Arc</button></div>
-      </div>
-      <div class="cmp lab-rv" id="cmp">
-        <img class="base" id="cmpB" src="img/full/option_2_view_3.jpg" alt="Wave study from the lobby">
-        <img class="top" id="cmpA" src="img/full/option_1_view_3.jpg" alt="Curtain study from the lobby">
-        <div class="hnd" id="hnd"><i>◂ ▸</i></div>
+    <div data-rv="scale">
+      <div class="cmp" id="cmp" data-cur="Drag">
+        <img loading="lazy" decoding="async" class="base" id="cmpB" src="img/opt/web_option_2_view_3.webp" alt="Wave study from the lobby">
+        <img loading="lazy" decoding="async" class="top" id="cmpA" src="img/opt/web_option_1_view_3.webp" alt="Curtain study from the lobby">
+        <div class="hnd"><i>◂ ▸</i></div>
+        <span class="lab-tag a">Option 1 · Curtain</span>
+        <span class="lab-tag b">Option 2 · Wave</span>
         <input type="range" min="0" max="100" id="cmpR" aria-label="Compare option 1 and option 2">
       </div>
-      <div class="views lab-rv" id="views">
+      <div class="views" id="views">
         <button data-v="3" class="on">From the lobby</button>
         <button data-v="2">Climbing</button>
         <button data-v="5">Upper flight</button>
         <button data-v="4">At the landing</button>
         <button data-v="1">Looking up</button>
-        <button data-v="7">Section</button>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sheet" id="s07" data-title="The stair in 3D" data-screen-label="07">
-  <div class="s3bg" aria-hidden="true"></div>
-  <div class="sheet-head"><span class="lab-eyebrow">The stair in 3D</span><span class="lab-kicker">Model · drag to orbit, scroll to zoom</span></div>
-  <div class="two stair3">
-    <div class="side xhb"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-      <h2 class="lab-display-2 lab-rv">Walk around the <em>wall</em></h2>
-      <p class="lab-lede lab-rv">The grand stair modelled with the wave wall in brushed metal. Orbit freely.</p>
-      <div class="s3qr lab-rv"><img src="img/qr-opera-stair.png" alt="QR code — scan to view the stair in AR"><span><b>opera_stair</b>Scan to view in AR</span></div>
-      <div class="s3key lab-rv">
-        <span class="lab-kicker">Mouse</span>
-        <div class="k"><img src="img/mouse_left.png" alt="Left mouse button"><span><b>Left · drag</b>Orbit</span></div>
-        <div class="k"><img src="img/mouse_right.png" alt="Right mouse button"><span><b>Right · drag</b>Pan</span></div>
-        <div class="k"><img src="img/mouse_middle.png" alt="Middle mouse wheel"><span><b>Wheel</b>Zoom</span></div>
+<section class="sc hold" id="c6" data-title="The stair in 3D" data-kicker="Model" data-screen-label="06">
+  <div class="pin">
+  <div class="sc-head"><span class="lab-eyebrow">The stair in 3D <span class="n">/</span> Rhino model</span><span class="lab-kicker">06 · drag to orbit, wheel to zoom</span></div>
+  <div class="grid">
+    <div class="side">
+      <h2 class="tl sm">Walk around the <em>wall</em></h2>
+      <p class="lede" data-rv>The grand stair modelled with the wave wall in brushed metal. Orbit freely.</p>
+      <div class="s3qr" data-rv><img src="img/qr-opera-stair.png" alt="QR code — scan to view the stair in AR"><span><b>opera_stair</b>Scan to view in AR</span></div>
+      <div class="s3key" data-stagger>
+        <div class="k"><img src="img/mouse_left.png" alt=""><span><b>Left · drag</b>Orbit</span></div>
+        <div class="k"><img src="img/mouse_right.png" alt=""><span><b>Right · drag</b>Pan</span></div>
+        <div class="k"><img src="img/mouse_middle.png" alt=""><span><b>Wheel</b>Zoom</span></div>
       </div>
     </div>
-    <div class="s3frame lab-rv" id="stair3d">
+    <div class="s3frame" id="stair3d" data-rv="scale" data-scrollpage="1" data-cur="Orbit">
       <canvas></canvas>
       <div class="lab-corners"><i></i><i></i><i></i><i></i></div>
       <span class="lab-tag">Opera stair · Rhino model</span>
@@ -304,326 +228,206 @@
       <button class="lab-btn spin on" data-spin aria-label="Toggle slow rotation">↻</button>
     </div>
   </div>
-</section>
-
-<section class="sheet" id="s08" data-title="Fabricators" data-screen-label="08">
-  <div class="sheet-head"><span class="lab-eyebrow">Fabricators</span><span class="lab-kicker">Decision 3</span></div>
-  <div class="two">
-    <div class="xhb"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-      <h2 class="lab-display-2 lab-rv">Three printers, three <em>materials</em></h2>
-      <p class="lab-lede lab-rv">We looked at three fabricators who already print at architectural scale. Each takes a different route to a wall, which changes weight, finish and cost. Select a company to see its work.</p>
-      <div class="clist lab-rv" id="plist">
-        <button class="lab-index" data-p="0"><span class="num">A</span><span class="name">Circdal · Printerior</span><span class="lab-kicker">Polymer</span><span class="d">Robotic polymer extrusion — an even, paintable layer line. Light panels.</span></button>
-        <button class="lab-index" data-p="1"><span class="num">B</span><span class="name">Pikus 3D</span><span class="lab-kicker">Concrete</span><span class="d">Printed concrete — a coarse, mineral layer line, proven in public interiors. Heavy; rigging required.</span></button>
-        <button class="lab-index on" data-p="2"><span class="num">C</span><span class="name">Branch Technology</span><span class="lab-kicker">Recommended</span><span class="d">Freeform cellular lattice — carbon-fibre reinforced polymer, skinned to any finish. Very light, and the most innovative system of the three.</span></button>
-      </div>
-    </div>
-    <div class="pcar lab-rv" id="pcar">
-      <div class="lab-frame">
-        <div class="tint"></div>
-        <div class="ph">
-          <img data-p="0" data-i="0" src="img/20.jpg" decoding="async" alt="KUKA robot printing a wavy panel" data-cap="Circdal · Robotic arm printing a full-height wave panel">
-          <img data-p="0" data-i="1" src="img/21.jpg" decoding="async" alt="Print head extruding layers" data-cap="Circdal · Extrusion head, layer by layer">
-          <img data-p="0" data-i="2" src="img/22.jpg" decoding="async" alt="Close-up of printed layer texture" data-cap="Circdal · Layer lines as finish">
-          <img data-p="0" data-i="3" src="img/23.jpg" decoding="async" alt="White printed fold detail" data-cap="Circdal · Fold detail in white">
-          <img data-p="1" data-i="0" src="img/24.jpg" decoding="async" alt="Printed concrete wave wall" data-cap="Pikus · Printed concrete wave wall, pre-install">
-          <img data-p="1" data-i="1" src="img/25.jpg" decoding="async" alt="Crew setting a printed concrete element" data-cap="Pikus · Setting a printed element on site">
-          <img data-p="1" data-i="2" src="img/26.jpg" decoding="async" alt="Printed planters in a retail space" data-cap="Pikus · Installed retail planters">
-          <img data-p="1" data-i="3" src="img/27.jpg" decoding="async" alt="Printed columns in a retail space" data-cap="Pikus · Installed columns, retail fit-out">
-          <img data-p="2" data-i="0" class="on" src="img/40.jpg" decoding="async" alt="Printed cellular lattice panel held upright in the robot cell" data-cap="Branch · Cellular Fabrication lattice, straight off the robot">
-          <img data-p="2" data-i="1" src="img/41.jpg" decoding="async" alt="Skinned lattice facade with vertical flowing ridges" data-cap="Branch · Skinned lattice facade, exterior">
-          <img data-p="2" data-i="2" src="img/42.jpg" decoding="async" alt="Diagram of the CompositeCore panel build-up" data-cap="Branch · CompositeCore: lattice, foam, finish and attachment">
-          <img data-p="2" data-i="3" src="img/web/43.jpg" decoding="async" alt="Dark finished panel surface with curved seams" data-cap="Branch · Finished panel surface and seam">
-          <img data-p="2" data-i="4" src="img/44.jpg" decoding="async" alt="Person beside a wall with exposed lattice and skinned panels" data-cap="Branch · Lattice exposed and skinned on one wall">
-          <span class="lab-tag" id="pTag">C · Branch Technology</span>
-          <span class="lab-tag n" id="pCount">01 / 05</span>
-          <div class="lab-corners"><i></i><i></i><i></i><i></i></div>
-        </div>
-      </div>
-      <div class="pbar">
-        <div class="thumbs" id="pThumbs">
-        <div class="set" data-p="0"><button class="on" data-i="0" aria-label="Image 1"><img src="img/20.jpg" alt=""></button><button data-i="1" aria-label="Image 2"><img src="img/21.jpg" alt=""></button><button data-i="2" aria-label="Image 3"><img src="img/22.jpg" alt=""></button><button data-i="3" aria-label="Image 4"><img src="img/23.jpg" alt=""></button></div>
-        <div class="set" data-p="1"><button class="on" data-i="0" aria-label="Image 1"><img src="img/24.jpg" alt=""></button><button data-i="1" aria-label="Image 2"><img src="img/25.jpg" alt=""></button><button data-i="2" aria-label="Image 3"><img src="img/26.jpg" alt=""></button><button data-i="3" aria-label="Image 4"><img src="img/27.jpg" alt=""></button></div>
-        <div class="set on" data-p="2"><button class="on" data-i="0" aria-label="Image 1"><img src="img/40.jpg" alt=""></button><button data-i="1" aria-label="Image 2"><img src="img/41.jpg" alt=""></button><button data-i="2" aria-label="Image 3"><img src="img/42.jpg" alt=""></button><button data-i="3" aria-label="Image 4"><img src="img/web/43.jpg" alt=""></button><button data-i="4" aria-label="Image 5"><img src="img/44.jpg" alt=""></button></div>
-        </div>
-        <div class="ctl">
-          <button class="lab-btn" id="pPrev" aria-label="Previous image">←</button>
-          <button class="lab-btn" id="pNext" aria-label="Next image">→</button>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
-<section class="sheet" id="s09" data-title="Comparison" data-screen-label="09">
-  <div class="sheet-head"><span class="lab-eyebrow">Comparison</span><span class="lab-kicker">Decision 3</span></div>
-  <h2 class="lab-display-2 lab-rv">How they <em>stack up</em></h2>
-  <p class="lab-lede lab-rv">The same three fabricators against the criteria that decide the stair wall. Circles mark what we still need from them.</p>
-  <div class="xhb xhb-table"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-  <table class="matrix lab-rv" id="matrix">
-    <tbody>
-    <tr><th>Criteria</th><th>Circdal · Printerior</th><th>Pikus 3D</th><th class="rec">Branch Technology</th></tr>
-    <tr><td>Process</td><td>Robotic arm, large-format extrusion</td><td>Gantry / robotic concrete printing</td><td class="rec">Cellular Fabrication, freeform lattice</td></tr>
-    <tr><td>Material</td><td>97% recycled PETG</td><td>Concrete</td><td class="rec">Carbon-fibre reinforced Lexan polymer matrix, closed-cell foam, exterior finish</td></tr>
-    <tr><td>Typical use</td><td>Panels and screens</td><td>Benches and minimal walls</td><td class="rec">Interior and exterior panels, walls, furniture, ceilings, screens, canopies, houses, signage, sculpture</td></tr>
-    <tr><td>Weight per panel</td><td>Light</td><td>Heavy — rigging required</td><td class="rec">Very light</td></tr>
-    <tr><td>Print resolution</td><td>Approx. 2 mm layer, paintable</td><td>Approx. 10 mm layer, mineral</td><td class="rec">Variety of finishes, smooth to aggregate</td></tr>
-    <tr><td>Max panel size</td><td class="tbd">Confirm with partner</td><td class="tbd">Confirm with partner</td><td class="tbd">Confirm with partner</td></tr>
-    <tr><td>Mockup lead time</td><td>2–3 weeks production and install, stock colour</td><td>5 weeks concept to delivery — Nov/Dec busy</td><td class="rec">~8 weeks contract to assembly</td></tr>
-    <tr><td>Mockup cost</td><td>$5,478 — 4'×8' panel $3,000 + shipping $178 + supports $2,300</td><td>$12,902 — 4'×8' panel $6,696 + freight $4,240 + install $1,966</td><td class="rec">$8,107 – $12,684 — one 4'×8' panel to two 8'×8'; install and backup wall by LJC/Clayco</td></tr>
-    <tr><td>Full wall rate</td><td>Interior $148/sf with mounting · Exterior $110/sf surface only</td><td>$168/sf turnkey — stair facade 2,300 sf ≈ $386,534</td><td class="rec">$49.91/sf panels + ~$50/sf pre-finish; design assist and PM on top</td></tr>
-    <tr><td>Fit for the stair wall</td><td>Possible — matches the study texture, but limited depth</td><td>Possible — needs structure review</td><td class="rec">Strong — lightest panel, deepest relief, most innovative system</td></tr>
-    </tbody>
-  </table>
-  </div>
-</section>
-
-<section class="sheet" id="s10" data-title="Printerior proposal" data-screen-label="10">
-  <div class="sheet-head"><span class="lab-eyebrow">Printerior proposal</span><span class="lab-kicker">Lobby mockup · email estimate</span></div>
-  <div class="two pikus">
-    <div class="xhb"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-      <h2 class="lab-display-2 lab-rv">Printerior <em>cost proposal</em></h2>
-      <p class="lab-lede lab-rv">Printerior sent a per-square-foot rate and a mockup price by email, not a formal proposal. The mockup is a single 4'×8' panel in their proprietary PETG wood-fibre material, satin finish, in a standard colour.</p>
-      <div class="bstats lab-rv">
-        <div><b>32 sf</b><span>One panel, 4'×8', standard colour</span></div>
-        <div><b>$148/sf</b><span>Interior wall, printed surface + mounting</span></div>
-        <div><b>2–3 wks</b><span>Production and install, stock colour</span></div>
-        <div><b>$5,478</b><span>Mockup, delivered to St. Louis, with supports</span></div>
-      </div>
-      <table class="matrix bcost pcost lab-rv">
-        <tbody>
-        <tr><th>Mockup scope</th><th>Basis</th><th>Cost</th></tr>
-        <tr><td>Mockup panel <i>PETG wood fibre, satin finish, standard colour</i></td><td>4'×8' · printed surface</td><td>$3,000</td></tr>
-        <tr><td>Shipping <i>to the St. Louis office</i></td><td>Freight, quoted</td><td>$178</td></tr>
-        <tr><td>Structure and supports <i>Fastmount mounting system</i></td><td>Additional for the mockup</td><td>$2,300</td></tr>
-        <tr class="tot"><td>Mockup total</td><td>Panel, shipping and supports</td><td>$5,478</td></tr>
-        </tbody>
-      </table>
-      <div class="pnotes lab-rv">
-        <div><span class="lab-kicker">Timing</span><p>Two to three weeks for production and installation using standard stock colours. Custom colour would add time — Printerior asked whether we have a colour requirement.</p></div>
-        <div><span class="lab-kicker">Cost reduction</span><p>The $148/sf interior rate is above their standard panel pricing because of the curved-wall design-build work. Savings would come from simplifying the mounting system.</p></div>
-      </div>
-    </div>
-    <div class="bvis">
-      <div class="pstage tall lab-rv">
-        <figure><img src="img/20.jpg" alt="Robotic arm printing a full-height wave panel" data-cap="Printerior · Robotic arm printing a full-height wave panel"><figcaption>Robotic extrusion</figcaption></figure>
-        <figure><img src="img/22.jpg" alt="Close-up of printed layer texture" data-cap="Printerior · Layer lines as finish, satin PETG"><figcaption>Layer lines · satin finish</figcaption></figure>
-        <figure><img src="img/23.jpg" alt="White printed fold detail" data-cap="Printerior · Fold detail in white"><figcaption>Fold detail</figcaption></figure>
-      </div>
-      <div class="pq lab-rv">
-        <span class="lab-kicker">Open items with Printerior</span>
-        <p>Custom colour requirement · wall assembly detail for an exterior bid · scope of the $2,300 structure and supports allowance.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sheet" id="s11" data-title="Pikus proposal" data-screen-label="11">
-  <div class="sheet-head"><span class="lab-eyebrow">Pikus proposal</span><span class="lab-kicker">Lobby mockup · 10.15.2026</span></div>
-  <div class="two pikus">
-    <div class="xhb"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-      <h2 class="lab-display-2 lab-rv">Pikus <em>cost proposal</em></h2>
-      <p class="lab-lede lab-rv">Pikus priced a single 4'×8' sculptural 3DCP panel for the lobby mockup — turnkey, with the structural supports and attachment system included in the panel price. The mockup pieces are pulled out of their full-building proposal below.</p>
-      <div class="bstats lab-rv">
-        <div><b>34.5 sf</b><span>One panel, 4'×8' artwork, 12" max depth</span></div>
-        <div><b>779 lb</b><span>Panel weight, hollow 7,500-psi 3DCP</span></div>
-        <div><b>5 wks</b><span>Concept to delivery</span></div>
-        <div><b>$12,902</b><span>Mockup, delivered and installed</span></div>
-      </div>
-      <table class="matrix bcost pcost lab-rv">
-        <tbody>
-        <tr><th>Mockup scope</th><th>Basis</th><th>Cost</th></tr>
-        <tr><td>Mockup panel <i>Sculptural architectural 3DCP, 7-stage GFR terrazzo finish</i></td><td>34.5 sf · $194/sf · supports and attachment included</td><td>$6,696</td></tr>
-        <tr><td>Freight <i>one truck, St. Louis</i></td><td>Budget allowance</td><td>$4,240</td></tr>
-        <tr><td>Installation <i>Pikus-approved installer, 1-year warranty</i></td><td>Mockup only · no spider crane rental</td><td>$1,966</td></tr>
-        <tr class="tot"><td>Mockup total</td><td>Excludes sales tax</td><td>$12,902</td></tr>
-        </tbody>
-      </table>
-      <div class="pnotes lab-rv">
-        <div><span class="lab-kicker">Timing</span><p>Five weeks from concept to delivery. Ranges with seasonality — November and December are historically busy for Pikus.</p></div>
-        <div><span class="lab-kicker">Assumptions</span><p>Mockup on grade; attachments fasten to a structural wall. Spider-crane access (6'×7') is assumed for the Opera install but not needed for the mockup.</p></div>
-      </div>
-    </div>
-    <div class="bvis">
-      <div class="pstage lab-rv" id="pstage">
-        <figure><img src="img/pikus/p2_0.jpg" alt="Pikus mockup panel in a bronze integral colour" data-cap="Pikus · Mockup panel, bronze integral colour"><figcaption>Mockup panel · bronze</figcaption></figure>
-        <figure><img src="img/pikus/p2_1.jpg" alt="Pikus section model of the stair with the curtain surface" data-cap="Pikus · Stairway section model with the curtain surface"><figcaption>Stairway · section model</figcaption></figure>
-        <figure><img src="img/pikus/p4_rig.jpg" alt="Printed concrete wave panel rigged from a crane" data-cap="Pikus · Precedent, printed concrete wave panel being set"><figcaption>Precedent · panel being set</figcaption></figure>
-      </div>
-      <div class="pfin lab-rv">
-        <img src="img/pikus/p3_0.jpg" alt="Pikus finish options: 7-stage terrazzo, 2-stage quartz aggregate, integral color" data-cap="Pikus · Finish options — A 7-stage terrazzo, B 2-stage quartz aggregate, C integral colour">
-        <div><span class="lab-kicker">Finish</span><p>Priced with A · 7-stage GFR terrazzo. Quartz aggregate and integral custom Pantone are the alternates.</p></div>
-      </div>
-      <div class="pq lab-rv">
-        <span class="lab-kicker">For the full wall, for reference</span>
-        <p>Opera staircase facade 2,300 sf · 96 panels · $386,534. Interior facade 24'×8' · $32,267. Full proposal including freight, tax and install: $750,226.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sheet" id="s12" data-title="Branch proposal" data-screen-label="12">
-  <div class="sheet-head"><span class="lab-eyebrow">Branch proposal</span><span class="lab-kicker">Lobby mockup · 10.19.2026</span></div>
-  <div class="two branch">
-    <div class="xhb"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-      <h2 class="lab-display-2 lab-rv">Branch Technology <em>cost proposal</em></h2>
-      <p class="lab-lede lab-rv">Branch returned three lobby mockup options for the curtain concept — same pre-finished panel system, different size and panel-to-panel conditions. Select an option to see it.</p>
-      <div class="bopts lab-rv" id="bopts">
-        <button class="on" data-o="0"><span class="lab-kicker">Option 1</span><b>Two panels, 8'×8'</b><span class="n">Side by side · 64 sf backplane · 1.0 ft depth</span><span class="c">$12,684</span></button>
-        <button data-o="1"><span class="lab-kicker">Option 2</span><b>Two panels, 4'×8'</b><span class="n">Vertical stack · 32 sf backplane · 0.67 ft depth</span><span class="c">$9,482</span></button>
-        <button data-o="2"><span class="lab-kicker">Option 3</span><b>One panel, 4'×8'</b><span class="n">Single panel · 32 sf backplane · 0.67 ft depth</span><span class="c">$8,107</span></button>
-      </div>
-      <table class="matrix bcost lab-rv">
-        <tbody>
-        <tr><th>Branch scope</th><th>Option 1</th><th>Option 2</th><th>Option 3</th></tr>
-        <tr><td>Branch panels <i>$49.91/sf · backerboard, hardware, clips</i></td><td>$3,194</td><td>$1,597</td><td>$1,597</td></tr>
-        <tr><td>Pre-finish <i>$50/sf · premium, by Branch partner</i></td><td>$5,770 <i>−$2,000</i></td><td>$2,865</td><td>$2,630</td></tr>
-        <tr><td>Design assist <i>geometry optimisation, shop drawings</i></td><td>$3,920</td><td>$3,420</td><td>$2,280</td></tr>
-        <tr><td>PM &amp; digital production <i>fabrication model, toolpath</i></td><td>$800</td><td>$600</td><td>$600</td></tr>
-        <tr><td>Shipping <i>allowance, actual +5%</i></td><td>$1,000</td><td>$1,000</td><td>$1,000</td></tr>
-        <tr class="tot"><td>Grand total</td><td>$12,684</td><td>$9,482</td><td>$8,107</td></tr>
-        <tr><td>By LJC / Clayco <i>not in Branch scope</i></td><td colspan="3">Field installation · backup wall and support structure · engineering (not required)</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="bvis">
-      <div class="bopt-stage lab-rv" id="bstage">
-        <div class="pane on" data-o="0">
-          <figure><img src="img/branch2/opt1_combo.png" alt="Option 1 axon: the full 8 by 8 wall and the two panels exploded apart" data-cap="Branch · Option 1, the full 8'×8' wall and how it splits into two panels"><figcaption>Axon · full wall and split</figcaption></figure>
-          <figure><img src="img/branch2/p4_1.png" alt="Option 1 plan: 8 foot wide curved panel on Z-clips" data-cap="Branch · Option 1 plan, 8'-0\" wide,="" 1'-6⅝\"="" max="" depth,="" z-clip="" attachment"=""><figcaption>Plan · 8'-0" wide, 1'-6⅝" deep</figcaption></figure>
-        </div>
-        <div class="pane" data-o="1">
-          <figure><img src="img/branch2/opt2_combo.png" alt="Option 2 axon: the full 4 by 8 panel and the two stacked panels exploded apart" data-cap="Branch · Option 2, the full panel and how it splits into two stacked pieces"><figcaption>Axon · full panel and split</figcaption></figure>
-          <figure><img src="img/branch2/p5_1.png" alt="Option 2 plan: 4 foot wide panel on Z-clips" data-cap="Branch · Option 2 plan, 4'-0\" wide,="" z-clip="" attachment"=""><figcaption>Plan · 4'-0" wide</figcaption></figure>
-        </div>
-        <div class="pane" data-o="2">
-          <figure><img src="img/branch2/p6_0.png" alt="Option 3 axon: one 4 by 8 panel" data-cap="Branch · Option 3, a single 4'×8' panel"><figcaption>Axon · 8'-0" tall</figcaption></figure>
-          <figure><img src="img/branch2/p6_1.png" alt="Option 3 plan: 4 foot wide panel on Z-clips" data-cap="Branch · Option 3 plan, 4'-0\" wide,="" z-clip="" attachment"=""><figcaption>Plan · 4'-0" wide</figcaption></figure>
-        </div>
-        <div class="lab-corners"><i></i><i></i><i></i><i></i></div>
-      </div>
-      <div class="bwhy lab-rv" id="bwhy">
-        <div class="pane on" data-o="0"><span class="lab-kicker">What it proves</span><ul><li>Panel-to-panel condition, with a non-rectilinear seam</li><li>Largest continuous parametric design across panels</li><li>Largest concave curve against the backplane</li></ul></div>
-        <div class="pane" data-o="1"><span class="lab-kicker">What it proves</span><ul><li>Panel-to-panel condition, top and bottom only</li><li>Continuous design and non-rectilinear seam across the stack</li><li>Minimal concave curve against the backplane</li></ul></div>
-        <div class="pane" data-o="2"><span class="lab-kicker">What it proves</span><ul><li>Parametric design on a single panel</li><li>No panel-to-panel conditions or continuous design</li><li>Minimal concave curve against the backplane</li></ul></div>
-      </div>
-      <div class="btime lab-rv">
-        <span class="lab-kicker">Branch timeline · ~8 weeks from contract</span>
-        <div class="row"><span>Contract signed</span><i style="--a:0;--w:1">by 11/6</i></div>
-        <div class="row"><span>Design finalization</span><i style="--a:2;--w:2"></i></div>
-        <div class="row"><span>Backup wall design · LJC / Clayco</span><i class="us" style="--a:2;--w:2"></i></div>
-        <div class="row"><span>Panel fabrication</span><i style="--a:4;--w:2"></i></div>
-        <div class="row"><span>Panel finish</span><i style="--a:6;--w:1"></i></div>
-        <div class="row"><span>Backup wall construction · LJC / Clayco</span><i class="us" style="--a:5;--w:2"></i></div>
-        <div class="row"><span>Shipping</span><i style="--a:7;--w:1"></i></div>
-        <div class="row"><span>Assembly</span><i style="--a:8;--w:1"></i></div>
-        <div class="axis"><span>10/23</span><span>11/6</span><span>11/20</span><span>12/4</span><span>12/18</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sheet" id="s13" data-title="Cost comparison" data-screen-label="13">
-  <div class="sheet-head"><span class="lab-eyebrow">Cost comparison</span><span class="lab-kicker">Lobby mockup · three proposals</span></div>
-  <div class="two cmpc">
-    <div>
-      <h2 class="lab-display-2 lab-rv">Three mockups, side by <em>side</em></h2>
-      <p class="lab-lede lab-rv">The same 4'×8' lobby mockup priced three ways. Totals are what we would pay to have a panel delivered; installation is only included where it was quoted.</p>
-      <div class="cbars lab-rv xhb"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-        <div class="row"><span class="who"><b>Printerior</b><i>PETG wood fibre · satin</i></span><div class="track"><i class="a" style="--w:21.43"></i><i class="b" style="--w:1.27"></i><i class="c" style="--w:16.43"></i></div><span class="tot">$5,478</span></div>
-        <div class="row"><span class="who"><b>Branch · Option 3</b><i>C-Fab lattice · one 4'×8'</i></span><div class="track"><i class="a" style="--w:30.19"></i><i class="b" style="--w:7.14"></i><i class="c" style="--w:20.57"></i></div><span class="tot">$8,107</span></div>
-        <div class="row"><span class="who"><b>Pikus</b><i>3DCP concrete · terrazzo</i></span><div class="track"><i class="a" style="--w:47.83"></i><i class="b" style="--w:30.29"></i><i class="c" style="--w:14.04"></i></div><span class="tot">$12,902</span></div>
-        <div class="row"><span class="who"><b>Branch · Option 1</b><i>C-Fab lattice · two 8'×8'</i></span><div class="track"><i class="a" style="--w:49.74"></i><i class="b" style="--w:7.14"></i><i class="c" style="--w:33.71"></i></div><span class="tot">$12,684</span></div>
-        <div class="row axis"><span class="who"></span><div class="ticks"><span>$0</span><span>$2k</span><span>$4k</span><span>$6k</span><span>$8k</span><span>$10k</span><span>$12k</span><span>$14k</span></div><span class="tot"></span></div>
-        <div class="key"><span><i class="a"></i>Panel and finish</span><span><i class="b"></i>Shipping</span><span><i class="c"></i>Design, PM or install</span></div>
-      </div>
-      <div class="pnotes lab-rv">
-        <div><span class="lab-kicker">Not like for like</span><p>Printerior includes its mounting supports but not labour; Branch excludes installation and the backup wall; Pikus includes install and the attachment system. Branch's price carries design assist and PM that the others fold into their rate.</p></div>
-        <div><span class="lab-kicker">Lead time</span><p>Printerior 2–3 weeks incl. install · Pikus 5 weeks (Nov/Dec busy) · Branch ~8 weeks from contract to assembly.</p></div>
-      </div>
-    </div>
-    <div class="bvis cmpc-table">
-      <table class="matrix bcost ccost lab-rv" id="ccost">
-        <tbody>
-        <tr><th>Mockup</th><th>Printerior</th><th>Pikus</th><th class="hl">Branch</th></tr>
-        <tr><td>Panel <i>size · material</i></td><td>4'×8' · PETG wood fibre, satin, standard colour</td><td>4'×8' · 3DCP concrete, 7-stage terrazzo</td><td class="hl">4'×8' to 8'×8' · C-Fab lattice, pre-finished</td></tr>
-        <tr><td>Panel and finish</td><td>$3,000</td><td>$6,696</td><td class="hl">$4,227 – $6,964</td></tr>
-        <tr><td>Shipping</td><td>$178</td><td>$4,240</td><td class="hl">$1,000</td></tr>
-        <tr><td>Design assist and PM</td><td>Included</td><td>Included</td><td class="hl">$2,880 – $4,720</td></tr>
-        <tr><td>Installation</td><td class="tbd">Not quoted</td><td>$1,966</td><td class="tbd">By LJC / Clayco</td></tr>
-        <tr><td>Supports and attachment</td><td>$2,300 · Fastmount</td><td>Included</td><td class="tbd">Backup wall by LJC / Clayco</td></tr>
-        <tr class="tot"><td>Mockup total</td><td>$5,478</td><td>$12,902</td><td class="hl">$8,107 – $12,684</td></tr>
-        <tr><td>Lead time</td><td>2–3 weeks incl. install</td><td>5 weeks</td><td class="hl">~8 weeks</td></tr>
-        <tr><td>Full wall rate <i>for reference</i></td><td>$148 /sf with mounting</td><td>$168 /sf turnkey</td><td class="hl">~$100 /sf panel + finish</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-<span class="dot" style="position: absolute; left: 1489px; top: 183px"></span></section>
-
-<section class="sheet" id="s14" data-title="Road to 1:1" data-screen-label="14">
-  <div class="lab-ghost">Build</div>
-  <div class="sheet-head"><span class="lab-eyebrow">Road to 1:1</span><span class="lab-kicker">Four stages</span></div>
-  <h2 class="lab-display-2 lab-rv">From desk print to <em>lobby</em></h2>
-  <p class="lab-lede lab-rv">A proposed sequence, dates to be set. Each stage ends with something physical on the table.</p>
-  <div class="road lab-rv xhb" id="road"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-    <i class="prog" id="roadProg"></i>
-    <div class="on"><span class="lab-node on"></span><span class="when">Stage 01</span><div class="t">Down-select, in house</div><p class="d">Small-scale prints of the two shortlisted concepts on the lab printer. Pick one.</p></div>
-    <div><span class="lab-node"></span><span class="when">Stage 02</span><div class="t">Partner mockup</div><p class="d">One bay of the wall printed by the chosen fabricator. Material, seams, finish and cost confirmed.</p></div>
-    <div><span class="lab-node"></span><span class="when">Stage 03</span><div class="t">Full-scale print</div><p class="d">1:1 prototype printed and finished. Workflow documented so the next component is faster.</p></div>
-    <div><span class="lab-node"></span><span class="when">Stage 04</span><div class="t">Install</div><p class="d">Prototype installed in the RBB lobby. Feedback from the office feeds the Opera design.</p></div>
-  </div>
-  <div class="lobby lab-rv">
-    <img src="img/28.webp" alt="Office lobby with trees and a feature stair" data-cap="RBB lobby · Candidate location for the 1:1 prototype">
-    <img src="img/29.jpg" alt="Office lobby with arched openings" data-cap="RBB lobby · Double-height wall by the arches">
-    <img src="img/30.webp" alt="Office lobby with glazing and planting" data-cap="RBB lobby · Daylit end wall">
-    <div class="cap"><span class="lab-kicker">Destination</span><p class="lab-body">The RBB lobby — tall, daylit, and walked through by everyone. The prototype lives where the firm can react to it.</p></div>
-  </div>
-</section>
-
-<section class="sheet" id="s15" data-title="The ask" data-screen-label="15">
-  <div class="sheet-head"><span class="lab-eyebrow">The ask</span><span class="lab-kicker">Today</span></div>
-  <div class="two finale">
-    <div class="xhb"><span class="lab-cross cx tl"></span><span class="lab-cross cx tr"></span><span class="lab-cross cx bl"></span><span class="lab-cross cx br"></span>
-      <h2 class="lab-display-2 lab-rv">Four decisions, one <em>wall</em></h2>
-      <p class="lab-lede lab-rv">Everything else the lab can carry. These four we need from you.</p>
-      <ol class="asks finale-asks lab-rv" id="asks">
-        <li data-band="0"><h3 class="lab-display-3">Confirm the stair wall</h3><p>Lock the main staircase as the site for the printed element so we design to its true height and curve.</p><div class="pick"><button>Agreed</button><button>Discuss</button></div></li>
-        <li data-band="1"><h3 class="lab-display-3">Pick one concept</h3><p>Choose which of curtain, dramatic arc and sound waves goes forward to print.</p><div class="pick" data-single="1"><button>Curtain</button><button>Dramatic arc</button><button>Sound waves</button></div></li>
-        <li data-band="2"><h3 class="lab-display-3">Approve a quote request</h3><p>Let us ask one or two fabricators for a single-bay mockup price and lead time.</p><div class="pick"><button>Circdal</button><button>Pikus</button><button>Branch</button></div></li>
-        <li data-band="3"><h3 class="lab-display-3">Reserve a location in the lobby</h3><p>Hold a spot in the RBB lobby for the 1:1 prototype — it may be free-standing rather than wall-mounted.</p><div class="pick"><button>Agreed</button><button>Discuss</button></div></li>
-      </ol>
-    </div>
-    <div class="askstage lab-rv" id="wave-wall-diagram">
-      <span class="st-status">Loading model</span>
-      <div class="askhint"><span class="lab-kicker">Wave wall</span><p>Move up to reveal the stair · drag to orbit · wheel to zoom</p></div>
-    </div>
-  </div>
-  <div class="lab-ticker"><div class="tk">
-    <span>Design</span><span>Process</span><span>Iteration</span><span>Parametric</span><span>Printed at scale</span><span>St. Louis Opera Theater</span><span>LJC Innovation Lab</span>
-    <span>Design</span><span>Process</span><span>Iteration</span><span>Parametric</span><span>Printed at scale</span><span>St. Louis Opera Theater</span><span>LJC Innovation Lab</span>
+<section class="cover from-r" id="v2" data-screen-label="07-cover">
+  <div class="cv"><div class="slab">
+    <img src="img/opt/branch-lattice.webp" alt="">
+    <div class="shade"></div>
+    <div class="ct"><span class="lab-kicker">07 / Decision 3</span><h2>Fabricators<em>.</em></h2><p>Three partners who already print at architectural scale. Polymer, concrete, lattice.</p></div>
   </div></div>
 </section>
 
-<div class="bar">
-  <div class="brand">LJC <b>/</b> Innovation Lab</div>
-  <div class="lab-dots" id="dots"></div>
-  <div class="ctl">
-    <button class="idx" id="idxBtn" aria-label="Open index">Index</button>
-    <button class="lab-btn" id="prev" aria-label="Previous sheet">←</button>
-    <button class="lab-btn" id="next" aria-label="Next sheet">→</button>
+<section class="sc" id="c7" data-title="Fabricators" data-kicker="Decision 3" data-screen-label="07">
+  <div class="sc-head"><span class="lab-eyebrow">Fabricators <span class="n">/</span> Three partners, three materials</span><span class="lab-kicker">07</span></div>
+  <h2 class="tl" style="max-width:800px">Who prints the <em>wall</em></h2>
+  <p class="lede" data-rv style="margin-bottom:56px">Three fabricators quoted the same 4'×8' lobby mockup. Each one is a different material system — and a different answer to what the layer line looks like.</p>
+  <div class="stack">
+    <div class="fab">
+      <div class="txt"><span class="lab-eyebrow">Partner A <span class="n">/</span> Polymer · email estimate</span><h3>Circdal · Printerior</h3><p class="sub">Robotic polymer extrusion — an even, paintable layer line in a proprietary PETG wood-fibre material, satin finish. Light panels; mounting system customised to follow the curve.</p>
+        <div class="stats"><div><b>32 sf</b><span>One panel, 4'×8', standard colour</span></div><div><b>$148/sf</b><span>Interior wall, surface + mounting</span></div><div><b>2–3 wks</b><span>Production and install, stock colour</span></div><div><b class="num-s">$5,478</b><span>Mockup, delivered with supports</span></div></div>
+        <table class="ct"><tbody>
+          <tr><th>Mockup scope</th><th>Basis</th><th>Cost</th></tr>
+          <tr><td>Mockup panel <i>PETG wood fibre, satin, standard colour</i></td><td>4'×8' · printed surface</td><td>$3,000</td></tr>
+          <tr><td>Shipping <i>to the St. Louis office</i></td><td>Freight, quoted</td><td>$178</td></tr>
+          <tr><td>Structure and supports <i>Fastmount mounting system</i></td><td>Additional for the mockup</td><td>$2,300</td></tr>
+          <tr class="tot"><td>Mockup total</td><td>Panel, shipping and supports</td><td>$5,478</td></tr>
+        </tbody></table>
+        <div class="notes"><div><span class="lab-kicker">Timing</span><p>Two to three weeks using stock colours. Custom colour adds time — Printerior asked whether we have a colour requirement.</p></div><div><span class="lab-kicker">Cost reduction</span><p>The $148/sf rate is above standard panel pricing because of the curved-wall design-build work. Savings come from simplifying the mounting.</p></div><div><span class="lab-kicker">Open items</span><p>Custom colour requirement · wall assembly detail for an exterior bid · scope of the $2,300 supports allowance.</p></div></div>
+      </div>
+      <div class="vis">
+        <div class="gal" data-zoom>
+          <div class="main"><img loading="lazy" decoding="async" src="img/opt/20.webp" alt="Robotic arm printing a full-height wave panel" data-cap="Printerior · Robotic arm printing a full-height wave panel"><span class="lab-tag">Partner A</span><span class="idx">01 / 03</span></div>
+          <div class="th"><button class="on"><img loading="lazy" decoding="async" src="img/opt/20.webp" alt="Robotic arm printing a full-height wave panel" data-cap="Printerior · Robotic arm printing a full-height wave panel"></button><button><img loading="lazy" decoding="async" src="img/opt/21.webp" alt="Print head extruding layers" data-cap="Printerior · Extrusion head, layer by layer"></button><button><img loading="lazy" decoding="async" src="img/opt/22.webp" alt="Close-up of printed layer texture" data-cap="Printerior · Layer lines as finish, satin PETG"></button><button><img loading="lazy" decoding="async" src="img/opt/23.webp" alt="White printed fold detail" data-cap="Printerior · Fold detail in white"></button></div>
+          <p class="gcap">Printerior · Robotic arm printing a full-height wave panel</p>
+        </div>
+      </div>
+    </div>
+    <div class="fab">
+      <div class="txt"><span class="lab-eyebrow">Partner B <span class="n">/</span> Concrete · proposal 10.15.2026</span><h3>Pikus 3D</h3><p class="sub">Printed concrete — a coarse, mineral layer line proven in public interiors. One sculptural 4'×8' 3DCP panel priced turnkey, with structural supports and attachment included. Heavy; rigging required.</p>
+        <div class="stats"><div><b>34.5 sf</b><span>One panel, 4'×8', 12" max depth</span></div><div><b>779 lb</b><span>Panel weight, hollow 7,500-psi 3DCP</span></div><div><b>5 wks</b><span>Concept to delivery</span></div><div><b class="num-s">$12,902</b><span>Mockup, delivered and installed</span></div></div>
+        <table class="ct"><tbody>
+          <tr><th>Mockup scope</th><th>Basis</th><th>Cost</th></tr>
+          <tr><td>Mockup panel <i>Sculptural 3DCP, 7-stage GFR terrazzo finish</i></td><td>34.5 sf · $194/sf · supports included</td><td>$6,696</td></tr>
+          <tr><td>Freight <i>one truck, St. Louis</i></td><td>Budget allowance</td><td>$4,240</td></tr>
+          <tr><td>Installation <i>Pikus-approved installer, 1-year warranty</i></td><td>Mockup only · no spider crane</td><td>$1,966</td></tr>
+          <tr class="tot"><td>Mockup total</td><td>Excludes sales tax</td><td>$12,902</td></tr>
+        </tbody></table>
+        <div class="notes"><div><span class="lab-kicker">Timing</span><p>Five weeks from concept to delivery. November and December are historically busy for Pikus.</p></div><div><span class="lab-kicker">Assumptions</span><p>Mockup on grade; attachments fasten to a structural wall. Spider-crane access is assumed for the Opera, not the mockup.</p></div><div><span class="lab-kicker">Full wall, for reference</span><p>Opera stair facade 2,300 sf · 96 panels · $386,534. Full proposal with freight, tax and install: $750,226.</p></div></div>
+      </div>
+      <div class="vis">
+        <div class="gal" data-zoom>
+          <div class="main"><img loading="lazy" decoding="async" src="img/opt/pikus_p2_0.webp" alt="Pikus mockup panel in a bronze integral colour" data-cap="Pikus · Mockup panel, bronze integral colour"><span class="lab-tag">Partner B</span><span class="idx">02 / 03</span></div>
+          <div class="th"><button class="on"><img loading="lazy" decoding="async" src="img/opt/pikus_p2_0.webp" alt="Pikus mockup panel in a bronze integral colour" data-cap="Pikus · Mockup panel, bronze integral colour"></button><button><img loading="lazy" decoding="async" src="img/opt/pikus_p2_1.webp" alt="Pikus section model of the stair with the curtain surface" data-cap="Pikus · Stairway section model with the curtain surface"></button><button><img loading="lazy" decoding="async" src="img/opt/pikus_p3_0.webp" alt="Pikus finish options" data-cap="Pikus · Finish options — A 7-stage terrazzo, B 2-stage quartz aggregate, C integral colour"></button><button><img loading="lazy" decoding="async" src="img/opt/pikus_p4_rig.webp" alt="Printed concrete wave panel rigged from a crane" data-cap="Pikus · Precedent, printed concrete wave panel being set"></button><button><img loading="lazy" decoding="async" src="img/opt/24.webp" alt="Printed concrete wave wall" data-cap="Pikus · Printed concrete wave wall, pre-install"></button><button><img loading="lazy" decoding="async" src="img/opt/26.webp" alt="Printed planters in a retail space" data-cap="Pikus · Installed retail planters"></button><button><img loading="lazy" decoding="async" src="img/opt/27.webp" alt="Printed columns in a retail space" data-cap="Pikus · Installed columns, retail fit-out"></button></div>
+          <p class="gcap">Pikus · Mockup panel, bronze integral colour</p>
+        </div>
+        <div class="fin"><span class="lab-kicker">Finish</span><p>Priced with A · 7-stage GFR terrazzo. Quartz aggregate and integral custom Pantone are the alternates.</p></div>
+      </div>
+    </div>
+    <div class="fab">
+      <div class="txt"><span class="lab-eyebrow">Partner C <span class="n">/</span> Lattice · proposal 10.19.2026 · recommended</span><h3>Branch Technology</h3><p class="sub">Freeform cellular lattice — carbon-fibre reinforced polymer, skinned to any finish. Very light, deepest relief, and the most innovative system of the three. Three lobby mockup options for the curtain concept; pick one.</p>
+        <div class="bopts" id="bopts">
+          <button class="on" data-o="0"><span class="lab-kicker">Option 1</span><b>Two panels, 8'×8'</b><span class="n">Side by side · 64 sf · 1.0 ft depth</span><span class="c">$12,684</span></button>
+          <button data-o="1"><span class="lab-kicker">Option 2</span><b>Two panels, 4'×8'</b><span class="n">Vertical stack · 32 sf · 0.67 ft depth</span><span class="c">$9,482</span></button>
+          <button data-o="2"><span class="lab-kicker">Option 3</span><b>One panel, 4'×8'</b><span class="n">Single panel · 32 sf · 0.67 ft depth</span><span class="c">$8,107</span></button>
+        </div>
+        <table class="ct bc" id="bct"><tbody>
+          <tr><th>Branch scope</th><th>Option 1</th><th>Option 2</th><th>Option 3</th></tr>
+          <tr><td>Branch panels <i>$49.91/sf · backerboard, hardware, clips</i></td><td>$3,194</td><td>$1,597</td><td>$1,597</td></tr>
+          <tr><td>Pre-finish <i>$50/sf · premium, by Branch partner</i></td><td>$5,770 <i>−$2,000</i></td><td>$2,865</td><td>$2,630</td></tr>
+          <tr><td>Design assist <i>geometry optimisation, shop drawings</i></td><td>$3,920</td><td>$3,420</td><td>$2,280</td></tr>
+          <tr><td>PM &amp; digital production <i>fabrication model, toolpath</i></td><td>$800</td><td>$600</td><td>$600</td></tr>
+          <tr><td>Shipping <i>allowance, actual +5%</i></td><td>$1,000</td><td>$1,000</td><td>$1,000</td></tr>
+          <tr class="tot"><td>Grand total</td><td>$12,684</td><td>$9,482</td><td>$8,107</td></tr>
+          <tr><td>By LJC / Clayco <i>not in Branch scope</i></td><td colspan="3">Field installation · backup wall and support structure</td></tr>
+        </tbody></table>
+        <div class="btime"><span class="lab-kicker">Branch timeline · ~8 weeks from contract</span>
+          <div class="row"><span>Contract signed · by 11/6</span><i style="--a:0;--w:1"></i></div>
+          <div class="row"><span>Design finalization</span><i style="--a:2;--w:2"></i></div>
+          <div class="row"><span>Backup wall design · LJC / Clayco</span><i class="us" style="--a:2;--w:2"></i></div>
+          <div class="row"><span>Panel fabrication</span><i style="--a:4;--w:2"></i></div>
+          <div class="row"><span>Panel finish</span><i style="--a:6;--w:1"></i></div>
+          <div class="row"><span>Backup wall construction · LJC / Clayco</span><i class="us" style="--a:5;--w:2"></i></div>
+          <div class="row"><span>Shipping</span><i style="--a:7;--w:1"></i></div>
+          <div class="row"><span>Assembly</span><i style="--a:8;--w:1"></i></div>
+          <div class="axis"><span>10/23</span><span>11/6</span><span>11/20</span><span>12/4</span><span>12/18</span></div>
+        </div>
+      </div>
+      <div class="vis">
+        <div class="bstage" id="bstage" data-zoom>
+          <div class="pane on" data-o="0"><figure><img loading="lazy" decoding="async" src="img/opt/branch2_opt1_combo.webp" alt="Option 1 axon: the full 8 by 8 wall and the two panels exploded apart" data-cap="Branch · Option 1, the full 8'×8' wall and how it splits into two panels"><figcaption>Axon · full wall and split</figcaption></figure><figure><img loading="lazy" decoding="async" src="img/opt/branch2_p4_1.webp" alt="Option 1 plan: 8 foot wide curved panel on Z-clips" data-cap="Branch · Option 1 plan, 8'-0&quot; wide, Z-clip attachment"><figcaption>Plan · 8'-0" wide, 1'-6⅝" deep</figcaption></figure></div>
+          <div class="pane" data-o="1"><figure><img loading="lazy" decoding="async" src="img/opt/branch2_opt2_combo.webp" alt="Option 2 axon: the full 4 by 8 panel and the two stacked panels exploded apart" data-cap="Branch · Option 2, the full panel and how it splits into two stacked pieces"><figcaption>Axon · full panel and split</figcaption></figure><figure><img loading="lazy" decoding="async" src="img/opt/branch2_p5_1.webp" alt="Option 2 plan: 4 foot wide panel on Z-clips" data-cap="Branch · Option 2 plan, 4'-0&quot; wide, Z-clip attachment"><figcaption>Plan · 4'-0" wide</figcaption></figure></div>
+          <div class="pane" data-o="2"><figure><img loading="lazy" decoding="async" src="img/opt/branch2_p6_0.webp" alt="Option 3 axon: one 4 by 8 panel" data-cap="Branch · Option 3, a single 4'×8' panel"><figcaption>Axon · 8'-0" tall</figcaption></figure><figure><img loading="lazy" decoding="async" src="img/opt/branch2_p6_1.webp" alt="Option 3 plan: 4 foot wide panel on Z-clips" data-cap="Branch · Option 3 plan, 4'-0&quot; wide, Z-clip attachment"><figcaption>Plan · 4'-0" wide</figcaption></figure></div>
+          <span class="lab-tag">Partner C</span><span class="idx">03 / 03</span>
+        </div>
+        <div class="bwhy" id="bwhy">
+          <div class="pane on" data-o="0"><span class="lab-kicker">What it proves</span><ul><li>Panel-to-panel condition, with a non-rectilinear seam</li><li>Largest continuous parametric design across panels</li><li>Largest concave curve against the backplane</li></ul></div>
+          <div class="pane" data-o="1"><span class="lab-kicker">What it proves</span><ul><li>Panel-to-panel condition, top and bottom only</li><li>Continuous design and non-rectilinear seam across the stack</li><li>Minimal concave curve against the backplane</li></ul></div>
+          <div class="pane" data-o="2"><span class="lab-kicker">What it proves</span><ul><li>Parametric design on a single panel</li><li>No panel-to-panel conditions or continuous design</li><li>Minimal concave curve against the backplane</li></ul></div>
+        </div>
+        <div class="gal" data-zoom>
+          <span class="lab-kicker">Precedents · click to enlarge</span>
+          <div class="th wide"><button><img loading="lazy" decoding="async" src="img/opt/40.webp" alt="Printed cellular lattice panel in the robot cell" data-cap="Branch · Cellular Fabrication lattice, straight off the robot"></button><button><img loading="lazy" decoding="async" src="img/opt/41.webp" alt="Skinned lattice facade with vertical flowing ridges" data-cap="Branch · Skinned lattice facade, exterior"></button><button><img loading="lazy" decoding="async" src="img/opt/42.webp" alt="Diagram of the CompositeCore panel build-up" data-cap="Branch · CompositeCore: lattice, foam, finish and attachment"></button><button><img loading="lazy" decoding="async" src="img/opt/web_43.webp" alt="Dark finished panel surface with curved seams" data-cap="Branch · Finished panel surface and seam"></button><button><img loading="lazy" decoding="async" src="img/opt/44.webp" alt="Person beside a wall with exposed lattice and skinned panels" data-cap="Branch · Lattice exposed and skinned on one wall"></button></div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
+<section class="sc hold" id="c8" data-title="Cost comparison" data-kicker="Decision 3" data-screen-label="08">
+  <div class="pin">
+  <div class="sc-head"><span class="lab-eyebrow">Cost comparison <span class="n">/</span> One mockup, priced three ways</span><span class="lab-kicker">08</span></div>
+  <div class="grid">
+    <div>
+      <h2 class="tl">Three mockups, side by <em>side</em></h2>
+      <p class="lede" data-rv>Totals are what we would pay to have a 4'×8' panel delivered; installation is only included where it was quoted.</p>
+      <p class="note" data-rv>Printerior includes its mounting supports but not labour; Branch excludes installation and the backup wall; Pikus includes install and the attachment system.</p>
+    </div>
+    <div class="cbars" id="cbars">
+      <div class="row"><span class="who"><b>Printerior</b><i>PETG wood fibre · satin</i></span><div class="trk"><i class="a" style="--w:21.43" data-v="$3,000"></i><i class="b" style="--w:1.27" data-v="$178"></i><i class="c" style="--w:16.43" data-v="$2,300"></i></div><span class="tot num-s">$5,478</span></div>
+      <div class="row"><span class="who"><b>Branch · Option 3</b><i>C-Fab lattice · one 4'×8'</i></span><div class="trk"><i class="a" style="--w:30.19" data-v="$4,227"></i><i class="b" style="--w:7.14" data-v="$1,000"></i><i class="c" style="--w:20.57" data-v="$2,880"></i></div><span class="tot num-s">$8,107</span></div>
+      <div class="row"><span class="who"><b>Pikus</b><i>3DCP concrete · terrazzo</i></span><div class="trk"><i class="a" style="--w:47.83" data-v="$6,696"></i><i class="b" style="--w:30.29" data-v="$4,241"></i><i class="c" style="--w:14.04" data-v="$1,965"></i></div><span class="tot num-s">$12,902</span></div>
+      <div class="row"><span class="who"><b>Branch · Option 1</b><i>C-Fab lattice · two 8'×8'</i></span><div class="trk"><i class="a" style="--w:49.74" data-v="$6,964"></i><i class="b" style="--w:7.14" data-v="$1,000"></i><i class="c" style="--w:33.71" data-v="$4,720"></i></div><span class="tot num-s">$12,684</span></div>
+      <div class="row" style="padding-top:0"><span></span><div class="ticks"><span style="left:0">$0</span><span style="left:14.29%">$2k</span><span style="left:28.57%">$4k</span><span style="left:42.86%">$6k</span><span style="left:57.14%">$8k</span><span style="left:71.43%">$10k</span><span style="left:85.71%">$12k</span><span style="left:100%">$14k</span></div><span></span></div>
+      <div class="key"><span><i class="a"></i>Panel and finish</span><span><i class="b"></i>Shipping</span><span><i class="c"></i>Design, PM or install</span><span class="hint">Hover a row for the split</span></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="cover" id="v3" data-screen-label="09-cover">
+  <div class="cv"><div class="slab">
+    <img src="img/opt/28.webp" alt="">
+    <div class="shade"></div>
+    <div class="ct"><span class="lab-kicker">09 / Decision 4</span><h2>Road to 1:1<em>.</em></h2><p>Four stages. Each one ends with something physical on the table, and the last ends in the RBB lobby.</p></div>
+  </div></div>
+</section>
+
+<section class="sc" id="c9" data-title="Road to 1:1" data-kicker="Decision 4" data-screen-label="09">
+  <div class="sc-head"><span class="lab-eyebrow">Road to 1:1 <span class="n">/</span> Proposed sequence</span><span class="lab-kicker">09</span></div>
+  <div class="grid">
+    <div>
+      <h2 class="tl">From desk print to <em>lobby</em></h2>
+      <p class="lede" data-rv>Each stage ends with something physical on the table.</p>
+      <div class="road" id="road">
+        <i class="prog"></i>
+        <div><span class="lab-node"></span><div class="t">Down-select, in house</div><p class="d">Small-scale prints of the shortlisted concept on the lab printer. Pick one.</p></div>
+        <div><span class="lab-node"></span><div class="t">Partner mockup</div><p class="d">One bay of the wall printed by the chosen fabricator. Material, seams, finish and cost confirmed.</p></div>
+        <div><span class="lab-node"></span><div class="t">Full-scale print</div><p class="d">1:1 prototype printed and finished. Workflow documented so the next component is faster.</p></div>
+        <div><span class="lab-node"></span><div class="t">Install</div><p class="d">Prototype installed in the RBB lobby. Feedback from the office feeds the Opera design.</p></div>
+      </div>
+    </div>
+    <div class="lobby">
+      <div class="ph" data-mask="up" data-win><img loading="lazy" decoding="async" src="img/opt/28.webp" alt="Office lobby with trees and a feature stair"></div>
+      <div class="ph" data-mask data-win><img loading="lazy" decoding="async" src="img/opt/29.webp" alt="Office lobby with arched openings"></div>
+      <div class="ph" data-mask data-win><img loading="lazy" decoding="async" src="img/opt/30.webp" alt="Office lobby with glazing and planting"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sc" id="c10" data-title="The ask" data-kicker="Today" data-screen-label="10">
+  <div class="sc-head"><span class="lab-eyebrow">The ask <span class="n">/</span> Today</span><span class="lab-kicker">10</span></div>
+  <div class="grid">
+    <div>
+      <h2 class="tl">Four decisions, one <em>wall</em></h2>
+      <p class="lede" data-rv>Everything else the lab can carry. These four we need from you. Tap to record the room's answer.</p>
+      <ol class="asks" data-stagger>
+        <li><span class="num">01</span><div><h3>Confirm the stair wall</h3><p>Lock the main staircase as the site so we design to its true height and curve.</p></div><div class="pick"><button>Agreed</button><button>Discuss</button></div></li>
+        <li><span class="num">02</span><div><h3>Pick one concept</h3><p>Choose which of curtain, dramatic arc and sound waves goes to small-scale print.</p></div><div class="pick"><button>Curtain</button><button>Dramatic arc</button><button>Sound waves</button></div></li>
+        <li><span class="num">03</span><div><h3>Approve a quote request</h3><p>Let us ask one or two fabricators for a single-bay mockup price and lead time.</p></div><div class="pick"><button>Printerior</button><button>Pikus</button><button>Branch</button></div></li>
+        <li><span class="num">04</span><div><h3>Reserve location in lobby</h3><p>Hold a wall in the RBB lobby for the 1:1 prototype. It might be free standing.</p></div><div class="pick"><button>Agreed</button><button>Discuss</button></div></li>
+      </ol>
+    </div>
+    <div class="askstage" id="wave-wall-diagram" data-rv="fade" data-cur="Reveal">
+      <div class="askhint"><span class="lab-kicker">Wave wall</span><p>Move up to reveal the stair · drag to orbit · wheel to zoom</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sc close" id="c11" data-title="LJC Innovation Lab" data-kicker="Close" data-screen-label="11">
+  <canvas id="cloud" aria-hidden="true"></canvas>
+  <div class="close-hint"><span class="lab-kicker">Move your pointer to the centre</span></div>
+  <div class="sig">LJC <b>/</b> Innovation Lab<br>Activation through 3D printed innovation</div>
+</section>
+<div class="lab-ticker"><div class="tk">
+  <span>Design</span><span>Process</span><span>Iteration</span><span>Parametric</span><span>Printed at scale</span><span>St. Louis Opera Theater</span><span>LJC Innovation Lab</span>
+  <span>Design</span><span>Process</span><span>Iteration</span><span>Parametric</span><span>Printed at scale</span><span>St. Louis Opera Theater</span><span>LJC Innovation Lab</span>
+</div></div>
+
+<div class="lbx" id="lbx" aria-hidden="true" data-cur="Close">
+  <div class="im"><img alt=""><span class="lab-tag"></span><div class="lab-corners"><i></i><i></i><i></i><i></i></div></div>
+  <button class="lab-btn x" aria-label="Close">×</button>
+  <span class="hint">Click anywhere or press Esc to close</span>
+</div>
 <div class="menu" id="menu" aria-hidden="true">
-  <span class="lab-eyebrow">Index <span class="n">/</span> Jump to a sheet</span>
+  <span class="lab-eyebrow">Index <span class="n">/</span> Jump to a section</span>
   <div class="cols" id="menuCols"></div>
 </div>
 
-<div class="lb" id="lb" aria-hidden="true"><div class="fr"><img id="lbImg" alt=""><div class="lab-cap"><span class="lab-kicker" id="lbK">Image</span><p id="lbP"></p></div></div></div>
-
 </div>
-<script src="deck.js"></script>
+<script src="scroll2.js"></script>
+<script src="diagrams2.js"></script>
 <script type="module" src="stair-viewer.js"></script>
 <script type="module" src="ask-reveal.js"></script>
 </body>

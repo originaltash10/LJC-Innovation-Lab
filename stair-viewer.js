@@ -87,8 +87,13 @@ function boot(host) {
     rim.position.set(center.x - radius * 0.6, bounds.max.y + radius * 1.1, center.z - radius * 1.8);
     camera.near = radius * 0.01; camera.far = radius * 40; camera.updateProjectionMatrix();
     controls.minDistance = radius * 0.05; controls.maxDistance = radius * 6;
-    // auto-frame: three-quarter view from the front-right, slightly above eye level
-    camera.position.set(center.x + radius * 1.1, bounds.min.y + radius * 0.9, center.z + radius * 1.5); controls.target.set(center.x, bounds.min.y + radius * 0.45, center.z); controls.update();
+    // auto-frame: three-quarter view from the front-right, slightly above eye level (scroll page pulls back so the whole stair fits)
+    if (host.dataset.scrollpage) { const dir = new THREE.Vector3(1.1, 0.55, 1.5).normalize(); controls.target.copy(center);
+      // project the 8 bounds corners and pull back until every one sits inside 90% of the frame
+      const corners = [0,1,2,3,4,5,6,7].map((i) => new THREE.Vector3(i & 1 ? bounds.max.x : bounds.min.x, i & 2 ? bounds.max.y : bounds.min.y, i & 4 ? bounds.max.z : bounds.min.z));
+      let fit = radius * 2; for (let n = 0; n < 24; n++) { camera.position.copy(center).addScaledVector(dir, fit); camera.lookAt(center); camera.updateMatrixWorld(); let m = 0; corners.forEach((c) => { const v = c.clone().project(camera); m = Math.max(m, Math.abs(v.x), Math.abs(v.y)); }); if (m <= 0.9) break; fit *= 1.08; }
+      controls.update(); }
+    else { camera.position.set(center.x + radius * 1.1, bounds.min.y + radius * 0.9, center.z + radius * 1.5); controls.target.set(center.x, bounds.min.y + radius * 0.45, center.z); controls.update(); }
     if (status) status.textContent = "";
     host.classList.add("ready");
   }, (ev) => { if (status && ev.total) status.textContent = "Loading model · " + Math.round(ev.loaded / ev.total * 100) + "%"; },
@@ -124,7 +129,7 @@ function boot(host) {
     get() { return { pos: camera.position.toArray().map(n => +n.toFixed(3)), tgt: controls.target.toArray().map(n => +n.toFixed(3)) }; },
     info() { const w = new THREE.Box3(); group.traverse((o) => { if (o.isMesh && o.userData.wave) w.expandByObject(o); }); return { bounds: [bounds.min.toArray(), bounds.max.toArray()], wave: [w.min.toArray(), w.max.toArray()] }; }
   };
-  const sheet = host.closest(".sheet");
+  const sheet = host.closest(".sheet"); // null on the scroll page (data-scrollpage)
   const io = new IntersectionObserver((es) => { es.forEach((en) => { if (en.isIntersecting && (!sheet || sheet.classList.contains("on") || !document.documentElement.classList.contains("deck"))) window.stairViewer.start(); else window.stairViewer.stop(); }); }, { threshold: 0.05 });
   io.observe(host);
   if (sheet) new MutationObserver(() => { if (sheet.classList.contains("on")) window.stairViewer.start(); else window.stairViewer.stop(); }).observe(sheet, { attributes: true, attributeFilter: ["class"] });

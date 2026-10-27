@@ -1,5 +1,5 @@
 // Mounts the wave-wall reveal diagram (uploaded module, used as-is) on the last sheet.
-import { initWaveWallDiagram } from './wave-wall-reveal.js';
+import { initWaveWallDiagram } from './wave-wall-reveal.js?v=2';
 const host = document.getElementById('wave-wall-diagram');
 if (host) {
   initWaveWallDiagram({
