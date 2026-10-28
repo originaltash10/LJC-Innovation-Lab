@@ -1,6 +1,6 @@
 /* LJC scroll v2 — live vector diagrams: plan trace on the Location cover, section cut, Branch lattice, particle wall */
 (function(){
-  var S=window.sp2, clamp=S.clamp, ease=S.ease, reduce=matchMedia("(prefers-reduced-motion: reduce)").matches, dpr=Math.min(devicePixelRatio||1,2);
+  var S=window.sp2, clamp=S.clamp, ease=S.ease, reduce=matchMedia("(prefers-reduced-motion: reduce)").matches, fine=matchMedia("(pointer:fine)").matches, dpr=Math.min(devicePixelRatio||1,2);
   var $=function(s,r){ return (r||document).querySelector(s); };
   var INK="#0C1926", BLUE="#2E6E99", ICE="#8DCCFF", MONO='9px "IBM Plex Mono", monospace';
   function fit(cv){ var r=cv.getBoundingClientRect(); if(!r.width||!r.height) return null; var w=Math.round(r.width*dpr), h=Math.round(r.height*dpr); if(cv.width!==w||cv.height!==h){ cv.width=w; cv.height=h; } var ctx=cv.getContext("2d"); ctx.setTransform(dpr,0,0,dpr,0,0); return {ctx:ctx,W:r.width,H:r.height}; }
@@ -11,8 +11,8 @@
   var plan=(function(){ var cover=$("#v1"); if(!cover) return null; var cv=$("canvas",cover), vec=null, cum=null, total=0;
     fetch("img/plan-vec.json").then(function(r){ return r.json(); }).then(function(v){ vec=v; cum=[]; total=0; v.paths.forEach(function(q){ var L=0; for(var i=2;i<q.p.length;i+=2) L+=Math.hypot((q.p[i]-q.p[i-2])*v.w,(q.p[i+1]-q.p[i-1])*v.h); total+=L; cum.push(total); }); });
     var sites=[[.95,.70],[.868,.288],[.807,.75]], names=["A","B","C"];
-    return { draw:function(now){ if(!onScreen(cover)||!S.desktop()) return; var f=fit(cv); if(!f||!vec) return; var ctx=f.ctx, W=f.W, CH=f.H; ctx.clearRect(0,0,W,CH); var p1=+cover.dataset.p||0, p2=+cover.dataset.p2||0; if(p1<.5) return;
-        var draw=ease(clamp(p2/.85,0,1)); if(draw<=0) return; var g=W*.07, pw=Math.min(W*.5,(CH*.66)*vec.w/vec.h), ph=pw*vec.h/vec.w, px=W-g-pw, py=CH*.5-ph*.56, sx=pw, sy=ph;
+    return { draw:function(now){ if(!onScreen(cover)) return; var f=fit(cv); if(!f||!vec) return; var ctx=f.ctx, W=f.W, CH=f.H; ctx.clearRect(0,0,W,CH); var p1=+cover.dataset.p||0, p2=+cover.dataset.p2||0; if(p1<.5) return;
+        var draw=ease(clamp(p2/.85,0,1)); if(draw<=0) return; var g=W*.07, pw=W<CH?W-2*g:Math.min(W*.5,(CH*.66)*vec.w/vec.h), ph=pw*vec.h/vec.w, px=W<CH?g:W-g-pw, py=W<CH?CH*.3-ph*.5:CH*.5-ph*.56, sx=pw, sy=ph;
         var lim=draw*total, n=vec.paths.length; ctx.lineCap="round"; ctx.lineJoin="round";
         // every stroke in sheet order up to the current length; the last few strokes are the pen, in ice blue
         for(var k=0;k<n;k++){ if(cum[k]-((k?cum[k-1]:0))<=0) continue; var start=k?cum[k-1]:0; if(start>lim) break; var q=vec.paths[k], full=cum[k]<=lim, fresh=lim-start<900; ctx.strokeStyle=fresh?ICE:"rgba(255,255,255,"+(q.w===2?.9:.62)+")"; ctx.lineWidth=q.w===2?1.3:.8; ctx.beginPath();
@@ -30,8 +30,9 @@
       targets.sort(function(p,q){ return (p[1]*4+p[0])-(q[1]*4+q[0]); }); };
     for(var z=0;z<NZ;z++) for(var y=0;y<NY;y++) for(var x=0;x<NX;x++) pts.push({p:[(x-(NX-1)/2)/(NX-1)*3.6,(y-(NY-1)/2)/(NY-1)*2.1,(z-(NZ-1)/2)/(NZ-1)*2.2],x:0,y:0,t:null});
     host.addEventListener("pointermove",function(e){ var r=cv.getBoundingClientRect(); ptr=[e.clientX-r.left,e.clientY-r.top]; }); host.addEventListener("pointerleave",function(){ ptr=null; });
-    return { draw:function(now){ if(!onScreen(host)) return; var f=fit(cv); if(!f) return; var ctx=f.ctx, W=f.W, CH=f.H; ctx.clearRect(0,0,W,CH); yaw+=ptr?.0014:.0005; var cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch),SC=Math.min(W*.34,CH*.5),CX=W/2,CY=CH/2;
-        var near=0; if(ptr){ var d=Math.hypot(ptr[0]-CX,ptr[1]-CY); var R=Math.min(W,CH); near=clamp(1-(d-R*.18)/(R*.3),0,1); } aT=ease(near); a+=(aT-a)*.06; host.classList.toggle("formed",a>.85);
+    var tapOn=false, cue=null; if(!fine){ cue=document.createElement("div"); cue.className="tapcue"; cue.textContent="Tap"; host.appendChild(cue); host.addEventListener("click",function(){ tapOn=!tapOn; cue.classList.add("off"); }); var hint=host.querySelector(".close-hint"); if(hint) hint.style.display="none"; }
+    return { draw:function(now){ if(!onScreen(host)){ if(cue&&(tapOn||cue.classList.contains("off"))){ tapOn=false; a=0; cue.classList.remove("off"); } return; } var f=fit(cv); if(!f) return; var ctx=f.ctx, W=f.W, CH=f.H; ctx.clearRect(0,0,W,CH); yaw+=ptr?.0014:.0005; var cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch),SC=Math.min(W*.34,CH*.5),CX=W/2,CY=CH/2;
+        var near=0; if(!fine){ near=tapOn?1:0; } else if(ptr){ var d=Math.hypot(ptr[0]-CX,ptr[1]-CY); var R=Math.min(W,CH); near=clamp(1-(d-R*.18)/(R*.3),0,1); } aT=ease(near); a+=(aT-a)*(aT<a?.025:.06); host.classList.toggle("formed",a>.85);
         // assign logo targets by projected order once, so neighbours travel together
         var proj=pts.map(function(q){ var x=q.p[0]*cy-q.p[2]*sy, z=q.p[0]*sy+q.p[2]*cy; var y=q.p[1]*cp-z*sp, z2=q.p[1]*sp+z*cp; var s=1/(1+z2*.35); return [CX+x*SC*s,CY-y*SC*s,s]; });
         if(targets&&!pts[0].t){ var order=pts.map(function(q,i){ return i; }).sort(function(i,j){ return (proj[i][1]*4+proj[i][0])-(proj[j][1]*4+proj[j][0]); }); order.forEach(function(i,r){ pts[i].t=targets[r]; }); }
