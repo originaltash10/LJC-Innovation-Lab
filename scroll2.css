@@ -392,6 +392,7 @@ html.sp-hero .hud .cnt{opacity:0}
 .cbars .trk{display:flex;height:26px;background:var(--lab-bg-2);background-image:repeating-linear-gradient(to right,transparent 0,transparent calc(14.2857% - 1px),var(--lab-line) calc(14.2857% - 1px),var(--lab-line) 14.2857%);position:relative}
 .cbars .trk i{display:block;flex:none;height:100%;width:0;transition:width 1.4s var(--sp-ease),filter .3s;position:relative}
 .cbars .trk i::after{content:attr(data-v);position:absolute;left:0;top:-17px;font-family:var(--lab-mono);font-size:9px;letter-spacing:.08em;color:var(--lab-ink);white-space:nowrap;opacity:0;transition:opacity .3s}
+.cbars .trk i.b::after{top:auto;bottom:-17px}.cbars .trk i.c::after{left:auto;right:0}
 .cbars .row:hover .trk i::after{opacity:1}
 .cbars .row:hover .trk i{filter:brightness(1.12)}
 .cbars.in .trk i{width:calc(var(--w)*1%)}
